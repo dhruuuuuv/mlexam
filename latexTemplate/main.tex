@@ -1,0 +1,52 @@
+\documentclass{scrartcl}
+\input{Macros.tex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{lipsum}
+\usepackage{hhline}
+\geometry{a4paper}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\bibliography{ref.bib}
+\usepackage{comment}
+\usepackage{multirow,array,units}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{bvc981}
+\lhead{Dhruv Chauhan}
+
+\newenvironment{redmatrix}
+  {\left(\array{@{}rrr|ccc@{}}}
+  {\endarray\right)}
+\newenvironment{ropmatrix}
+  {\array{@{}c@{}}}
+  {\endarray}
+\newcommand\opone[2]{\xrightarrow{(#1)\times r_#2}}
+\newcommand\optwo[3]{\xrightarrow{r_#1{}+{} #2r_#3}}
+\begin{document}
+\title{Machine Learning Final Exam}
+\subtitle{Department of Computer Science, University of Copenhagen}
+\author{Dhruv Chauhan}
+\maketitle
+
+\section{In a galaxy far, far away}
+\subsection{}
+The variance of the red-shifts in the spectroscopic training data was calculated to be:
+
+\[ 0.0106 \]
+
+(where from now on, unless specified, values are shown to 3 significant places) \\
+
+The MSE on the test SDSS predictions was calculated to be:
+
+\[ 0.000812 \]
+
+\subsection{}
+
+% Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
+%
+% \printbibliography
+\end{document}
