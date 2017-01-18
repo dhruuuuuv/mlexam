@@ -14,7 +14,7 @@ from sklearn import linear_model
 # fn to load in the dataset
 def import_dataset(filename):
     with open(filename, 'r') as csvfile:
-        lines = csv.reader(csvfile, delimiter=' ')
+        lines = csv.reader(csvfile, delimiter=',')
         data = list(lines)
         for i in range(len(data)):
             point = list(map(float, data[i]))
@@ -32,4 +32,10 @@ def data_prep(train, stest, etest):
     mse = ((etest - stest) ** 2).mean(axis=None)
     print("mse on rsss: " + repr(mse))
 
-def linreg(gtrain, gtest, rssstrain, rssstest):
+def linreg(gtrain, gtest, labeltrain, labeltest):
+    gtrain = np.array(gtrain)
+    gtest = np.array(gtest)
+    labeltrain = np.array(labeltrain)
+    labeltest = np.array(labeltest)
+
+    # 

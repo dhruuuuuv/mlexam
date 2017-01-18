@@ -16,7 +16,7 @@ import galaxies
 # fn to load in the dataset
 def import_dataset(filename):
     with open(filename, 'r') as csvfile:
-        lines = csv.reader(csvfile, delimiter=' ')
+        lines = csv.reader(csvfile, delimiter=',')
         data = list(lines)
         for i in range(len(data)):
             point = list(map(float, data[i]))
@@ -30,7 +30,7 @@ def main():
     redshifte_train = "ML2016EstimatedRedshiftsTrain.dt"
     redshifte_test = "ML2016EstimatedRedshiftsTest.dt"
 
-    galaxies_train = "ML2016EGalaxiesTrain.dt"
+    galaxies_train = "ML2016GalaxiesTrain.dt"
     galaxies_test = "ML2016GalaxiesTest.dt"
 
     rs_ss_train = import_dataset(redshiftss_train)
