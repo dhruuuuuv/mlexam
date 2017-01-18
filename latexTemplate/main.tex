@@ -46,6 +46,36 @@ The MSE on the test SDSS predictions was calculated to be:
 
 \subsection{}
 
+The linear regression was done in Python, using the \texttt{sklearn} linear regression package. This performs an ordinary least squares linear regression. The error function is a Mean Squared Error. \\
+
+The parameters of the model were calculated to be:
+
+\begin{center}
+[  -2.82898070e+11,   6.79638352e+11, -7.30280682e+11,  3.84379194e+11, \\
+   -5.08387940e+10,  -2.44829466e+11,  6.20014394e+10,  4.45567121e+11, \\
+   -3.89498568e+11,   1.26759474e+11,  2.82898070e+11, -3.96740282e+11, \\
+    3.33540400e+11,  -5.08387940e+10,  2.44829466e+11,  1.82828027e+11, \\
+   -2.62739094e+11,   1.26759474e+11]
+\end{center}
+
+The error on the training data was calculated to be $0.00187$, and on the test data was $0.00187$ also. The errors noramlised by the variance, $\sigma^2_{red}$ were equal to $0.176$ for both the test and the training data. \\
+
+% FINISH
+This normalised error falling below one signifies that...
+
+\subsection{}
+
+For the non-linear regression, I chose to apply the K-nearest neighbours (KNN) algorithm. I chose this method for its simplicity (following Occam's razor), and therefore its ease of understanding. The simplicity of the algorithm is also reflected in the single hyperparameter, $k$, which means that there is less computation in tuning the hyperparameter. \\
+
+I utilised the \texttt{neighbours} library from the \texttt{sklearn} package.
+
+The KNN algorithm uses a distance metric to calculate the distance between a (set of) training point(s). I used the Euclidian distance, given by $ || \xbf - \xbf' || $, or $ \sqrt {\xbf^T \xbf' } $.
+
+My method involved doing the following:
+\begin{enumerate}
+    \item Given a certain K,
+\end{enumerate}
+
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %
 % \printbibliography

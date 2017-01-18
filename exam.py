@@ -42,9 +42,9 @@ def main():
     g_train = import_dataset(galaxies_train)
     g_test = import_dataset(galaxies_test)
 
-    galaxies.data_prep(rs_ss_train, rs_ss_test, rs_e_test)
+    trainvar = galaxies.data_prep(rs_ss_train, rs_ss_test, rs_e_test)
 
-    galaxies.linreg(g_train, g_test, rs_ss_train, rs_ss_test)
+    galaxies.linreg(g_train, g_test, rs_ss_train, rs_ss_test, trainvar)
 
 
 if __name__ == '__main__':
