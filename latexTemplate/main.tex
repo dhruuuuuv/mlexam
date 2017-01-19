@@ -44,6 +44,8 @@ The MSE on the test SDSS predictions was calculated to be:
 
 \[ 0.000812 \]
 
+This shows that the predictions were quite accurate.
+
 \subsection{}
 
 The linear regression was done in Python, using the \texttt{sklearn} linear regression package. This performs an ordinary least squares linear regression. The error function is a Mean Squared Error. \\
@@ -67,14 +69,13 @@ This normalised error falling below one signifies that...
 
 For the non-linear regression, I chose to apply the K-nearest neighbours (KNN) algorithm. I chose this method for its simplicity (following Occam's razor), and therefore its ease of understanding. The simplicity of the algorithm is also reflected in the single hyperparameter, $k$, which means that there is less computation in tuning the hyperparameter. \\
 
-I utilised the \texttt{neighbours} library from the \texttt{sklearn} package.
+I utilised the \texttt{neighbours} library from the \texttt{sklearn} package. \\
 
-The KNN algorithm uses a distance metric to calculate the distance between a (set of) training point(s). I used the Euclidian distance, given by $ || \xbf - \xbf' || $, or $ \sqrt {\xbf^T \xbf' } $.
+The KNN algorithm uses a distance metric to calculate the distance between a (set of) training point(s) and the other points. I used the Euclidian distance, given by $ || \xbf - \xbf' || $, or $ \sqrt {\xbf^T \xbf' } $. The algorithm works by calculating the distances from a test point to the other points, and then finding the nearest K points to that point. In a regression task, the test point is assigned the value of the mean of the nearest K neighbours. \\
 
-My method involved doing the following:
-\begin{enumerate}
-    \item Given a certain K,
-\end{enumerate}
+My method involved using model selection methods such as cross-validation and grid search. Since this is model selection, cross validation was needed as we only use the training data during model selection. This gave us a better way to prevent overfitting of the training data. I used the \texttt{GridSearchCV} package from \texttt{sklearn}. The range of possible $k$ values was given as the odd numbers between 1 and 29. This performed a 5-fold cross validation on each of the possible values of $k$, averaging out the resulting error (i.e. splitting the data into 5 equal chunks, using 4 as the training set, and 1 as the validation set, and then cycling through all possible 5 validation sets). The error function used in the algorithm was the mean squared error.\\
+
+This method resulted in the optimum hyperparameter as $k = 7$, with a MSE of $0.00118$ on the test data, and a MSE of $0.000870$. Clearly, the KNN Regressor worked better on the training data, which is to be expected as even with cross-validation, since the model is so simple, the training points are bound to have a low MSE. In comparison to the training data in the linear regressor, which performed the same as the test data. The difference in this would be due to the nature of a linear regressor, which would 'average out' the regression line over the points, thus leading to a small MSE on both the training and test data. On the test data, the KNN Regressor did perform a bit better than the linear regressor - perhaps due to the non-linear nature of KNN capturing the underlying nature of the data slightly more accurately. Overall, I believe the KNN method worked well as we had a relatively low variance on the data - KNN can be skewed by big outliers in the data. The cross-validation helped to prevent over-fitting on the data, which may have also caused the error on the test data to drop in comparison to the linear regressor.
 
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %

@@ -10,6 +10,7 @@ import plotly.plotly as py
 
 import sklearn
 from sklearn import linear_model, neighbors
+from sklearn.model_selection import GridSearchCV
 
 # fn to load in the dataset
 def import_dataset(filename):
@@ -35,6 +36,24 @@ def data_prep(train, stest, etest):
     return var
 
 def knn(gtrain, gtest, labeltrain, labeltest):
+    params = {"n_neighbors": np.arange(1, 31, 2)}
+    model = neighbors.KNeighborsRegressor(n_jobs=-1)
+    grid = GridSearchCV(model, params, scoring='neg_mean_squared_error', cv=5)
+    grid.fit(gtrain, labeltrain)
+    acc = grid.score(gtest, labeltest)
+    acc2 = grid.score(gtrain, labeltrain)
+
+    print("grid search mse test: {}".format(acc))
+    print("grid search mse train: {}".format(acc2))
+    print("grid search best param: {}".format(grid.best_params_))
+
+    # k = 3
+    # knn = neighbors.KNeighborsRegressor(3)
+    # y_ = knn.fit(gtrain, labeltrain).predict(gtest)
+    #
+    # # print(y_)
+    # mse = ((y_ - labeltest) ** 2).mean(axis=None)
+    # print("mse on knn, k = %.1f: " % k + repr(mse))
 
 
 def linreg(gtrain, gtest, labeltrain, labeltest, var):

@@ -46,6 +46,8 @@ def main():
 
     galaxies.linreg(g_train, g_test, rs_ss_train, rs_ss_test, trainvar)
 
+    galaxies.knn(g_train, g_test, rs_ss_train, rs_ss_test)
+
 
 if __name__ == '__main__':
     main()
