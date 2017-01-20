@@ -24,7 +24,7 @@ def import_dataset(filename):
             data[i] = point
         return data
 
-def logreg():
+def split_data():
     wtrain = import_dataset("ML2016WeedCropTrain.csv")
     wtest = import_dataset("ML2016WeedCropTest.csv")
 
@@ -36,6 +36,12 @@ def logreg():
 
     train_y = wtrain_whole[:,-1]
     test_y = wtest_whole[:,-1]
+
+    return (train_x, train_y, test_x, test_y)
+
+
+
+def logreg(train_x, train_y, test_x, test_y):
 
 # using co-ordinate descent
     logreg = linear_model.LogisticRegression(solver='liblinear')
@@ -57,18 +63,16 @@ def logreg():
     print("01 loss test: {}".format(z_one_loss_test))
     print("01 loss train: {}".format(z_one_loss_train))
 
-def perform_svm():
+def normalised_methods():
     wtrain = import_dataset("ML2016WeedCropTrain.csv")
     wtest = import_dataset("ML2016WeedCropTest.csv")
 
     wtrain_whole = np.array(wtrain)
     wtest_whole = np.array(wtest)
 
-    train_x = wtrain_whole[:,:-1]
-    test_x = wtest_whole[:,:-1]
+    train_x, train_y, test_x, test_y = svms.norm(wtrain_whole, wtest_whole)
 
-    train_y = wtrain_whole[:,-1]
-    test_y = wtest_whole[:,-1]
+def perform_svm(train_x, train_y, test_x, test_y):
 
     j = jaakkola(train_x, train_y)
     gamma_j = 1 / (2 * (j**2))
