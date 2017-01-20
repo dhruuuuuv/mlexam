@@ -72,6 +72,12 @@ def normalised_methods():
 
     train_x, train_y, test_x, test_y = svms.norm(wtrain_whole, wtest_whole)
 
+    print("normalised logistic regression")
+    logreg(train_x, train_y, test_x, test_y)
+
+    print("normalised SVMs")
+    perform_svm(train_x, train_y, test_x, test_y)
+
 def perform_svm(train_x, train_y, test_x, test_y):
 
     j = jaakkola(train_x, train_y)

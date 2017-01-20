@@ -33,7 +33,7 @@
 \maketitle
 
 \section{In a galaxy far, far away}
-\subsection{}
+\subsection{Data preparation}
 The variance of the red-shifts in the spectroscopic training data was calculated to be:
 \[ 0.0106 \]
 (where from now on, unless specified, values are shown to 3 significant places). \\
@@ -42,7 +42,7 @@ The MSE on the test SDSS predictions was calculated to be:
 \[ 0.000812 \]
 This shows that the predictions were quite accurate.
 
-\subsection{}
+\subsection{Linear regression}
 
 The linear regression was done in Python, using the \texttt{sklearn} linear regression package. This performs an ordinary least squares linear regression. The error function is a Mean Squared Error. \\
 
@@ -65,7 +65,7 @@ The error on the training data was calculated to be $0.00187$, and on the test d
 % FINISH
 This normalised error falling below one signifies that...
 
-\subsection{}
+\subsection{Non-Linear regression}
 
 For the non-linear regression, I chose to apply the K-nearest neighbours (KNN) algorithm. I chose this method for its simplicity (following Occam's razor), and therefore its intuitive understanding. The simplicity of the algorithm is also reflected in the single hyperparameter, $k$ (if you consider a fixed distance metric), which means that there is less computation in tuning the hyperparameter. \\
 
@@ -82,7 +82,7 @@ Clearly, the KNN Regressor worked better on the training data, which is to be ex
 \newpage
 \section{Weed}
 
-\subsection{}
+\subsection{Logistic Regression}
 The logistic regression was done in python, using the \texttt{LogisticRegression} package from \texttt{sklearn}. This implementation uses the logistic function. We are trying to classify testing points according to binary labels (0 - weeds, 1 - crops). The algorithm tries to minimise the following function:
 
 \[ \min_{w, c} \frac{1} {2} w^T w + C \sum^n_{i=1} \log e ^{(-y_i(X^t_i \; w + c)) +1)} \]
@@ -105,7 +105,7 @@ with bias term:
 
 The zero-one loss on the training data was: $0.0200$, and on the test data: $0.0348$.
 
-\subsection{}
+\subsection{Binary classification using support vector machines}
 I used the \texttt{sklearn} python package, specfically the \texttt{svm.SVC} and \texttt{GridSearchCV} packages - in addition to \texttt{numpy}. Their model selection allows cross validation and grid-searching across values. It does this by splitting the training data into the training and validation sets across 5 folds and then running with the specified grid combination, for each option, finally returning the option with the lowest classification error. The error was calculated as the zero-one loss.\\
 
 I used a kernel of the form:
@@ -137,6 +137,10 @@ The accuracy for the training and test sets is shown below:
 \end{align*}
 
 From the accuracy results above, on both the training and test sets, the SVM performed very well overall. This demonstrates the effectiveness of SVMs, especially in comparison to logistic regression.
+
+\subsection{Normalisation}
+
+The normalisation was performed by
 
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %

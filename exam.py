@@ -52,12 +52,12 @@ def part1():
         galaxies.knn(g_train, g_test, rs_ss_train, rs_ss_test)
 
 def part2():
-    train_x, train_y, test_x, test_y = weeds.split()
+    train_x, train_y, test_x, test_y = weeds.split_data()
     # -- part 2.1 --
     # weeds.logreg(train_x, train_y, test_x, test_y)
 
     # -- part 2.2 --
-    weeds.perform_svm(train_x, train_y, test_x, test_y)
+    # weeds.perform_svm(train_x, train_y, test_x, test_y)
 
     # -- part 2.3 --
     weeds.normalised_methods()

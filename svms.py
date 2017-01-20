@@ -52,21 +52,44 @@ def norm(train, test):
     mean = np.mean(tr, axis=0)
     var = np.var(tr, axis=0)
 
+    # f_norm = lambda x: ((x - mean) / var)
+    #
+    # train_norm  = [f_norm(x) for x in trnl]
+    # test_norm   = [f_norm(x) for x in tenl]
+
     # print(mean, var)
 
-    trn = preprocessing.scale(tr)
-    ten = preprocessing.scale(te)
+    # trn = preprocessing.scale(tr)
+    # ten = preprocessing.scale(te)
+    #
+    # trnl = preprocessing.scale(trnl)
+    # tenl = preprocessing.scale(tenl)
 
-    trnl = preprocessing.scale(trnl)
-    tenl = preprocessing.scale(tenl)
+    scaler = preprocessing.StandardScaler().fit(trnl)
 
-    for i, row in enumerate(trn):
-        row[-1] = trl[i]
+    # m = scaler.mean_
+    # v = scaler.var_
 
-    for i, row in enumerate(ten):
-        row[-1] = tel[i]
+    # print(mean)
+    # print(m)
+    # print(var)
+    # print(v)
 
-    meantest = np.mean(ten, axis=0)
-    vartest = np.var(ten, axis=0)
+    train_std = scaler.transform(trnl)
+    test_std = scaler.transform(tenl)
 
-    return (trnl, trl, tenl, tel)
+    print(np.var(train_std, axis=0))
+    print(np.var(test_std, axis=0))
+
+    # for i, row in enumerate(train_std):
+    #     row[-1] = trl[i]
+    #
+    # for i, row in enumerate(test_std):
+    #     row[-1] = tel[i]
+
+    # meantrain = np.mean(train_norm, axis=0)
+    # vartrain = np.var(train_norm, axis=0)
+    # print(meantrain)
+    # print(vartrain)
+
+    return (train_std, trl, test_std, tel)
