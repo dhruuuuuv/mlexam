@@ -122,16 +122,21 @@ Using the formula given, I calculated:
 
 From that, the grid search looked over values of C and $\gamma$ as given in the instructions, with $b = 10$. \\
 
-From the grid search, the best hyperparameters were found to be:
+From the grid search, the optimum hyperparameters were found to be:
 
 \begin{align*}
     C &= 1000 \\
-    \gamma &= 1.35e-8 
+    \gamma &= 1.35e-8
 \end{align*}
 
-The model had the lowest loss with $C = 10$, and $\gamma = 0.1$, 4 logarithmically scaled values were used for each surrounding these values in the grid-search.
+The accuracy for the training and test sets is shown below:
 
-On the training model, the loss was $0$, and on the
+\begin{align*}
+    & \text{accuracy}_{\text{training}}   &= 0.978 \\
+    & \text{accuracy}_{\text{test}}       &= 0.969 \\
+\end{align*}
+
+From the accuracy results above, on both the training and test sets, the SVM performed very well overall. This demonstrates the effectiveness of SVMs, especially in comparison to Logistic Regression.
 
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %

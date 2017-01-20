@@ -22,8 +22,6 @@ def svm(data, labels, test, testlab, j):
     gamma = [b**-3, b**-2, b**-1, 1, b, b**2, b**3]
     gammavals = [(i * j) for i in gamma]
 
-    # print(gammavals)
-
     param_grid = [
     {'C' : cvals, 'gamma' : gammavals, 'kernel': ['rbf']}
     ]
