@@ -72,9 +72,11 @@ def perform_svm():
 
     j = jaakkola(train_x, train_y)
     gamma_j = 1 / (2 * (j**2))
-    print(gamma_j)
 
-    svms.svm(train_x, train_y, test_x, test_y)
+    print("jaakkola sigma: {}".format(j))
+    print("jaakkola gamma: {}".format(gamma_j))
+
+    svms.svm(train_x, train_y, test_x, test_y, gamma_j)
 
 def jaakkola(xs, ys):
     G = []

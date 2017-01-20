@@ -105,6 +105,34 @@ with bias term:
 
 The zero-one loss on the training data was: $0.0200$, and on the test data: $0.0348$.
 
+\subsection{}
+I used the \texttt{sklearn} python package, specfically the \texttt{svm.SVC} and \texttt{GridSearchCV} packages - in addition to \texttt{numpy}. Their model selection allows cross validation and grid-searching across values. It does this by splitting the training data into the training and validation sets across 5 folds and then running with the specified grid combination, for each option, finally returning the option with the lowest classification error. The error was calculated as the zero-one loss.\\
+
+I used a kernel of the form:
+
+\[ k(\xbf, \zbf) = exp \big(-\gamma {|| \xbf - \zbf ||}^2\big) \] \\
+
+\newpage
+Using the formula given, I calculated:
+
+\begin{align*}
+    \sigma_{\text{Jaakkola}} &= 609 \\
+    \gamma_{\text{Jaakkola}} &= 1.35e-06
+\end{align*}
+
+From that, the grid search looked over values of C and $\gamma$ as given in the instructions, with $b = 10$. \\
+
+From the grid search, the best hyperparameters were found to be:
+
+\begin{align*}
+    C &= 1000 \\
+    \gamma &= 1.35e-8 
+\end{align*}
+
+The model had the lowest loss with $C = 10$, and $\gamma = 0.1$, 4 logarithmically scaled values were used for each surrounding these values in the grid-search.
+
+On the training model, the loss was $0$, and on the
+
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %
 % \printbibliography

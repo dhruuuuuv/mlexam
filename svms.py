@@ -16,11 +16,13 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.svm import SVC
 
-def svm(data, labels, test, testlab, j)
+def svm(data, labels, test, testlab, j):
     b = 10
     cvals = [b**-3, b**-2, b**-1, 1, b, b**2, b**3, b**4, b**5, b**6]
-    gammavals = (j * [b**-3, b**-2, b**-1, 1, b, b**2, b**3])
-    print(gammavals)
+    gamma = [b**-3, b**-2, b**-1, 1, b, b**2, b**3]
+    gammavals = [(i * j) for i in gamma]
+
+    # print(gammavals)
 
     param_grid = [
     {'C' : cvals, 'gamma' : gammavals, 'kernel': ['rbf']}
@@ -30,10 +32,10 @@ def svm(data, labels, test, testlab, j)
 
     clf.fit(data, labels)
 
-    print(clf.best_params_)
+    print("best parameters: {}".format(clf.best_params_))
 
-    print(clf.score(data, labels))
-    print(clf.score(test, testlab))
+    print("accuracy on training set: {}".format(clf.score(data, labels)))
+    print("accuracy on test set: {}".format(clf.score(test, testlab)))
 
 def norm(train, test):
 
