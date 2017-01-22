@@ -1,0 +1,11 @@
+{
+  "projectPath": "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam",
+  "title": "LaTeX-Plus Project",
+  "root": "latexTemplate/main.tex",
+  "program": "pdflatex",
+  "latexmkOptions": "-bibtex -pdf -shell-escape",
+  "output": ".latex",
+  "openOutput": "true",
+  "postAction": "link",
+  "postPath": ""
+}

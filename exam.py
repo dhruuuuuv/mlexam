@@ -57,10 +57,14 @@ def part2():
     # weeds.logreg(train_x, train_y, test_x, test_y)
 
     # -- part 2.2 --
-    weeds.perform_svm(train_x, train_y, test_x, test_y)
+    # weeds.perform_svm(train_x, train_y, test_x, test_y)
 
     # -- part 2.3 --
-    weeds.normalised_methods()
+    # weeds.normalised_methods()
+
+    # -- part 2.3 --
+    weeds.principal_ca(train_x, train_y, test_x, test_y)
+
 
 
 def main():

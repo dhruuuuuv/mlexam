@@ -1,10 +1,11 @@
 # Fdb version 3
-["biber main"] 1484848214 "main.bcf" "main.bbl" "main" 1485034938
-  "main.bcf" 1485034938 99674 de387e29f507bbe0d7b0bcbfd446a7cd ""
+["biber main"] 1485087825 "main.bcf" "main.bbl" "main" 1485093177
+  "main.bcf" 1485093177 99991 af3b01967611cbec710671e265135711 ""
+  "ref.bib" 1485087823 762 bb1c6b275312ea654ad558c49012fd42 ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1485034936 "main.tex" "main.pdf" "main" 1485034938
+  "main.blg"
+["pdflatex"] 1485093175 "main.tex" "main.pdf" "main" 1485093177
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -190,13 +191,14 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1451162218 3849860 c7325c6e6bda9916a942a6b84bc907f9 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "Macros.tex" 1484731776 4438 55546f8aaad4748e923cfe71fd41eacd ""
-  "main.aux" 1485034938 1508 ece50e4d694ea0dd05e869ca8ec8f0f0 ""
-  "main.bbl" 1484848077 0 d41d8cd98f00b204e9800998ecf8427e "biber main"
-  "main.run.xml" 1485034938 2395 be110cb7f98d620e4b01884da77a2651 ""
-  "main.tex" 1485034935 9440 11c9543f994cd82d9d6b8e3e4e79b3d9 ""
+  "main.aux" 1485093177 1701 a08e8d443115ffcf92f2be953e6becc5 ""
+  "main.bbl" 1485087826 2120 a97629c234da9bf39596cc40bf503cbf "biber main"
+  "main.run.xml" 1485093177 2395 be110cb7f98d620e4b01884da77a2651 ""
+  "main.tex" 1485093175 11336 540e5a121305e009c1c65dfbdfb6ea8c ""
+  "ref.bib" 1485087823 762 bb1c6b275312ea654ad558c49012fd42 ""
   (generated)
-  "main.log"
   "main.run.xml"
   "main.aux"
   "main.bcf"
+  "main.log"
   "main.pdf"

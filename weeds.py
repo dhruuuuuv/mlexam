@@ -9,10 +9,10 @@ import pandas as pd
 import plotly.plotly as py
 
 import sklearn
-from sklearn import linear_model, neighbors
+from sklearn import linear_model, neighbors, decomposition
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import zero_one_loss
-import svms
+import svms, home_pca
 
 # fn to load in the dataset
 def import_dataset(filename):
@@ -70,13 +70,47 @@ def normalised_methods():
     wtrain_whole = np.array(wtrain)
     wtest_whole = np.array(wtest)
 
+    # -- DELETE WHEN DONE --
+
+    np.set_printoptions(suppress=True)
+
+    # print("RANGES")
+    # print(svms.calc_range(wtrain_whole))
+
     train_x, train_y, test_x, test_y = svms.norm(wtrain_whole, wtest_whole)
+
+    # print("RANGES NORM")
+    # print(svms.calc_range(train_x))
 
     print("normalised logistic regression")
     logreg(train_x, train_y, test_x, test_y)
 
     print("normalised SVMs")
     perform_svm(train_x, train_y, test_x, test_y)
+
+def principal_ca(train_x, train_y, test_x, test_y):
+    print(train_x.shape)
+    np.set_printoptions(suppress=True)
+
+
+    pca = decomposition.PCA()
+    pca.fit(train_x)
+    # print(pca.n_components_)
+
+    sum_val = 0
+
+    for i, x in enumerate(pca.explained_variance_ratio_):
+        sum_val += pca.explained_variance_ratio_[i]
+        print(sum_val)
+
+    pca2 = decomposition.PCA(n_components=2)
+    pca2.fit(train_x)
+    # print(pca2.n_components_)
+    # print(pca2.explained_variance_ratio_)
+
+
+
+
 
 def perform_svm(train_x, train_y, test_x, test_y):
 

@@ -16,6 +16,10 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.svm import SVC
 
+def calc_range(data):
+    r = np.ptp(data, axis=0)
+    print(repr(r))
+
 def svm(data, labels, test, testlab, j):
     b = 10
     cvals = [b**-3, b**-2, b**-1, 1, b, b**2, b**3, b**4, b**5, b**6]

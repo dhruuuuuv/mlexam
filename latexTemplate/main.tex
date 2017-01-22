@@ -87,7 +87,7 @@ The logistic regression was done in python, using the \texttt{LogisticRegression
 
 \[ \min_{w, c} \frac{1} {2} w^T w + C \sum^n_{i=1} \log e ^{(-y_i(X^t_i \; w + c)) +1)} \]
 
-It also uses a coordinate descent algorithm, which is a derivative-free optimization algorithm that performs a line search in one coordinate direction for the current point in each iteration. (Wikipedia, The Free Encyclopedia, 2016)\\
+It also uses a coordinate descent algorithm, which is a derivative-free optimization algorithm that performs a line search in one coordinate direction for the current point in each iteration. \cite{wiki:cd} \\
 
 The parameters produced by the model were:
 
@@ -184,11 +184,15 @@ with bias:
 
 The zero-one loss on the training data was: $0.0300$, and on the test data: $0.0383$.
 
-For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$
+For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$, this places a different level of importance on different features. In the training data, the ranges of the different features spanned from $112$ for feature 1, to $7205$ for feature 4. This squared Euclidian distance measure means that a difference of 1 in the 4th feature (a tiny amount of difference, relative to the range is equivalent to, about 0.01\%) would be equivalent to a difference of approximately 0.90\% in the 1st feature. This shows that small differences are exaggerated in feature 4 from the Euclidian distance calculation. By normalising the data, we even out these differences in ranges to adjust for this problem. In the transformed data, the range of feature 1 is 10.78, and feature 4 is 4.80, which means distance in both is much more relative. The results also converged faster than without normalising the data first. \\
 
+However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. As we can see, the normalisation did not have as much of an effect as with the SVMs. This is due to the fact that algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
 
+With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is saying that random forests are invariant to monotonic transformations of individual features. \cite{so:norm}
 
-% Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
-%
-% \printbibliography
+\subsection{Principal Component Analysis}
+The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimensionality. \\
+
+\newpage
+\printbibliography
 \end{document}
