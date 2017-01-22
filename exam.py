@@ -42,30 +42,36 @@ def part1():
         g_train = import_dataset(galaxies_train)
         g_test = import_dataset(galaxies_test)
 
-        # -- part 1.1 ---
+        print("-- part 1.1 ---")
         trainvar = galaxies.data_prep(rs_ss_train, rs_ss_test, rs_e_test)
 
-        # -- part 1.2 ---
+        print("-- part 1.2 ---")
         galaxies.linreg(g_train, g_test, rs_ss_train, rs_ss_test, trainvar)
 
-        # -- part 1.3 ---
+        print("-- part 1.3 ---")
         galaxies.knn(g_train, g_test, rs_ss_train, rs_ss_test)
 
 def part2():
     train_x, train_y, test_x, test_y = weeds.split_data()
-    # -- part 2.1 --
+
+    # print("-- part 2.1 --")
     # weeds.logreg(train_x, train_y, test_x, test_y)
 
-    # -- part 2.2 --
+    # print("-- part 2.2 --")
     # weeds.perform_svm(train_x, train_y, test_x, test_y)
 
-    # -- part 2.3 --
+    # print("-- part 2.3 --")
     # weeds.normalised_methods()
 
-    # -- part 2.3 --
-    weeds.principal_ca(train_x, train_y, test_x, test_y)
+    # print("-- part 2.4 --")
+    pcs, v1, v2 = weeds.principal_ca(train_x, train_y, test_x, test_y)
 
-
+    # print("-- part 2.5 --")
+    centers = train_x[:2,:]
+    kmeans = weeds.clustering(train_x, train_y, test_x, test_y, centers)
+    ccv1 = np.dot(centers, pcs[0])
+    ccv2 = np.dot(centers, pcs[1])
+    home_pca.plot_2_pc_cc(v1, v2, train_y, ccv1, ccv2)
 
 def main():
     # part1()

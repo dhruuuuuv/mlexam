@@ -12,6 +12,7 @@ import sklearn
 from sklearn import linear_model, neighbors, decomposition
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import zero_one_loss
+from sklearn.cluster import KMeans
 import svms, home_pca
 
 # fn to load in the dataset
@@ -88,6 +89,18 @@ def normalised_methods():
     print("normalised SVMs")
     perform_svm(train_x, train_y, test_x, test_y)
 
+def clustering(train_x, train_y, test_x, test_y, center_init):
+    kmeans = KMeans(n_clusters=2, n_init=1, max_iter=1000, init=center_init, algorithm="full", n_jobs=-1).fit(train_x)
+
+    # comparison = (kmeans.labels_ == train_y)
+    # true_values = [x for x in comparison if x == True]
+    # false_values = [x for x in comparison if x == False]
+    # print(len(true_values)/len(train_y))
+    # print(len(false_values)/len(train_y))
+    # print(kmeans.cluster_centers_)
+    return kmeans
+
+
 def principal_ca(train_x, train_y, test_x, test_y):
     print(train_x.shape)
     np.set_printoptions(suppress=True)
@@ -118,6 +131,8 @@ def principal_ca(train_x, train_y, test_x, test_y):
     # print(pca2.n_components_)
 
     home_pca.plot_2_pc(v1, v2, train_y)
+
+    return (pca.components_, v1, v2)
 
 
 def perform_svm(train_x, train_y, test_x, test_y):

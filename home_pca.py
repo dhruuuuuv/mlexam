@@ -108,7 +108,7 @@ def plot_2_pc(vec1, vec2, label_vec):
 
     plt.show()
 
-def plot_2_pc_cc(vec1, vec2, label_vec, ccs):
+def plot_2_pc_cc(vec1, vec2, label_vec, cc0, cc1):
 
     fig = plt.figure()
     ax = plt.subplot(211)
@@ -122,6 +122,8 @@ def plot_2_pc_cc(vec1, vec2, label_vec, ccs):
 
     zipped_tuples = list(zip(vec1, vec2))
 
+    projected_clusters = list(zip(cc0, cc1))
+
     for i in range(len(zipped_tuples)):
         color = get_colour_from_label(label_vec[i])
         plt.scatter(zipped_tuples[i][0], zipped_tuples[i][1], color=color[0], label=color[1])
@@ -129,6 +131,9 @@ def plot_2_pc_cc(vec1, vec2, label_vec, ccs):
     handles, labels = ax.get_legend_handles_labels()
     by_label = OrderedDict(zip(labels, handles))
     ax.legend(by_label.values(), by_label.keys(), loc=3, prop={'size':10})
+
+    plt.plot(projected_clusters[0], color='g', label="0 cluster center")
+    plt.plot(projected_clusters[1], color='o', label="1 cluster center")
 
     plt.show()
 
