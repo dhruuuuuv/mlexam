@@ -83,7 +83,7 @@ Clearly, the KNN Regressor worked better on the training data, which is to be ex
 \section{Weed}
 
 \subsection{Logistic Regression}
-The logistic regression was done in python, using the \texttt{LogisticRegression} package from \texttt{sklearn}. This implementation uses the logistic function. We are trying to classify testing points according to binary labels (0 - weeds, 1 - crops). The algorithm tries to minimise the following function:
+The logistic regression was done in Python, using the \texttt{LogisticRegression} package from \texttt{sklearn}. This implementation uses the logistic function. We are trying to classify testing points according to binary labels (0 - weeds, 1 - crops). The algorithm tries to minimise the following function:
 
 \[ \min_{w, c} \frac{1} {2} w^T w + C \sum^n_{i=1} \log e ^{(-y_i(X^t_i \; w + c)) +1)} \]
 
@@ -106,7 +106,7 @@ with bias term:
 The zero-one loss on the training data was: $0.0200$, and on the test data: $0.0348$.
 
 \subsection{Binary classification using support vector machines}
-I used the \texttt{sklearn} python package, specfically the \texttt{svm.SVC} and \texttt{GridSearchCV} packages - in addition to \texttt{numpy}. Their model selection allows cross validation and grid-searching across values. It does this by splitting the training data into the training and validation sets across 5 folds and then running with the specified grid combination, for each option, finally returning the option with the lowest classification error. The error was calculated as the zero-one loss.\\
+I used the \texttt{sklearn} Python package, specfically the \texttt{svm.SVC} and \texttt{GridSearchCV} packages - in addition to \texttt{numpy}. Their model selection allows cross validation and grid-searching across values. It does this by splitting the training data into the training and validation sets across 5 folds and then running with the specified grid combination, for each option, finally returning the option with the lowest classification error. The error was calculated as the zero-one loss.\\
 
 I used a kernel of the form:
 
@@ -188,10 +188,10 @@ For SVMs, the accuracy improved marginally on the training data, but stayed cons
 
 However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. As we can see, the normalisation did not have as much of an effect as with the SVMs. This is due to the fact that algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
 
-With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is saying that random forests are invariant to monotonic transformations of individual features. \cite{so:norm}
+With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is by saying that random forests are invariant to monotonic transformations of individual features.\cite{so:norm}
 
 \subsection{Principal Component Analysis}
-The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimensionality. \\
+The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in Python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimensionality. \\
 
 \begin{figure}[h]
 \includegraphics[width=16cm]{eig.png}
@@ -209,11 +209,21 @@ The PCA gave 13 principal components, of which only 2 were necessary to explain 
 
 The scatter plot in Figure \ref{fig:2pc} shows the data projected onto the first two principal components of the resulting 13. The legend can be used to identify the class of the points. \\
 
-Looking at the plot, one can see how important these first 2 principal components are, as visually the clusters are mainly separated by their colours. In comparison, a plot of the data projected against the final 2 principal components is mostly concentrated around the center.
+Looking at the plot, one can see how important these first 2 principal components are, as visually the clusters are mainly separated by their colours. In comparison, a plot of the data projected against the final 2 principal components is mostly concentrated around the center. \\
 
 \subsection{Clustering}
 
+The K-Means, was performed using a combination of the \texttt{sklearn.cluster.KMeans} package in Python, and previous code I had written for an assignment. The K-Means implementation was used with $k = 2$. The normal full K-Means algorithm was used with a maximum of 300 iterations. The cluster start points were initialised to the first 2 points in the training set.\\
 
+\begin{figure}[h]
+\includegraphics[width=16cm]{2pc_cc.png}
+\caption{Plot of the data projected onto the first two principal components, with cluster centers from 2-Means clustering}
+\label{fig:2pc_cc}
+\end{figure}
+
+The projection of the resulting cluster centers onto the first two principal components can be seen in Figure \ref{fig:2pc_cc}. From the plot, the K-Means algorithm performed very well on the data projected onto the first 2 principal components, as by-eye, each cluster center sits approximately in the center of each of the crops and weeds clusters.
+
+The cluster centers were projected onto the first two principal components by taking the matrix of the cluster centers and performing the dot product of it against each principal component vector. This results in the projected clusters on each of the principal component vectors.
 
 \newpage
 \printbibliography

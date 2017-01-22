@@ -310,6 +310,9 @@ INPUT ./eig.png
 INPUT 2pc.png
 INPUT ./2pc.png
 INPUT ./2pc.png
+INPUT 2pc_cc.png
+INPUT ./2pc_cc.png
+INPUT ./2pc_cc.png
 INPUT main.aux
 INPUT main.run.xml
 OUTPUT main.run.xml
