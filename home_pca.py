@@ -117,7 +117,7 @@ def plot_2_pc_cc(vec1, vec2, label_vec, cc0, cc1):
 
     plt.xlabel("principal component 1")
     plt.ylabel("principal component 2")
-    plt.title("Plot of first 2 Principal Components")
+    plt.title("Plot of first 2 Principal Components with cluster centers")
     # plt.scatter(vec1, vec2)
 
     zipped_tuples = list(zip(vec1, vec2))
@@ -128,8 +128,8 @@ def plot_2_pc_cc(vec1, vec2, label_vec, cc0, cc1):
         color = get_color(label_vec[i])
         plt.scatter(zipped_tuples[i][0], zipped_tuples[i][1], color=color[0], label=color[1])
 
-    plt.scatter(cc0[0], cc0[1], color='g', s=50, marker="^", label="weeds cluster center")
-    plt.scatter(cc1[0], cc1[1], color='m', s=50, marker="^", label="crops cluster center")
+    plt.scatter(cc0[0], cc0[1], s=150, color="c", marker="^", label="crops cluster center")
+    plt.scatter(cc1[0], cc1[1], s=150, color="c", marker="v", label="weeds cluster center")
 
     handles, labels = ax.get_legend_handles_labels()
     by_label = OrderedDict(zip(labels, handles))

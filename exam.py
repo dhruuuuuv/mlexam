@@ -71,14 +71,20 @@ def part2():
     centers = train_x[:2,:]
     kmeans = weeds.clustering(train_x, train_y, test_x, test_y, centers)
     final_centroids = kmeans.cluster_centers_
+
     ccv1 = np.dot(final_centroids, pcs[0])
     ccv2 = np.dot(final_centroids, pcs[1])
-    print(final_centroids.shape)
-    print(pcs[0].shape)
-    print(pcs[1].shape)
+
     # print(ccv1)
     # print(ccv2)
-    home_pca.plot_2_pc_cc(v1, v2, train_y, ccv1, ccv2)
+    ccs = list(zip(ccv1, ccv2))
+    # print(ccs)
+
+    # print(ccv1)
+    # print(ccv2)
+    # print(ccv1)
+    # print(ccv2)
+    home_pca.plot_2_pc_cc(v1, v2, train_y, ccs[0], ccs[1])
 
 def main():
     # part1()
