@@ -193,6 +193,26 @@ With random forests, normalisation does not affect the performance. This is as i
 \subsection{Principal Component Analysis}
 The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimensionality. \\
 
+\begin{figure}[h]
+\includegraphics[width=16cm]{eig.png}
+\caption{Eigenspectrum of the data}
+\label{fig:eig}
+\end{figure}
+
+The PCA gave 13 principal components, of which only 2 were necessary to explain 90\% of the variance. This is verified by looking at the eigenspectrum plot in Figure \ref{fig:eig}. This plots the log of the eigenvalues against the principal component number. \\
+
+\begin{figure}[h]
+\includegraphics[width=16cm]{2pc.png}
+\caption{Plot of the data projected onto the first two principal components}
+\label{fig:2pc}
+\end{figure}
+
+The scatter plot in Figure \ref{fig:2pc} shows the data projected onto the first two principal components of the resulting 13. The legend can be used to identify the class of the points. \\
+
+Looking at the plot, one can see how important these first 2 principal components are, as visually the clusters are mainly separated by their colours. In comparison, a plot of the data projected against the final 2 principal components is mostly concentrated around the center.
+
+\subsection{Clustering}
+
 \newpage
 \printbibliography
 \end{document}

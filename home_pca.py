@@ -28,17 +28,12 @@ def compute_eigenvalues(data):
 
         return (meanmat, eigen_pairs)
 
-def plot_eigenspectrum(eigen_pairs):
+def plot_eigenspectrum(eigen_values):
     fig = plt.figure()
     ax = plt.subplot(211)
     plt.grid(True)
 
-    eigen_values = []
-
-    for i in eigen_pairs:
-        eigen_values.append(i[0])
-
-    eigen_values = np.array(eigen_values)
+    print(eigen_values)
 
     cumulative_eigen_values = np.cumsum(eigen_values)
 
@@ -46,14 +41,16 @@ def plot_eigenspectrum(eigen_pairs):
 
     log_eigen = []
 
-    for i in range(len(eigen_values)):
-        log_eigen.append(math.log(eigen_values[i]))
+    log_eigen = [math.log(x) for x in eigen_values]
 
+    # for i in range(len(eigen_values)):
+    #     log_eigen.append(math.log(eigen_values[i]))
 
     plt.xlabel("number of eigenvector")
     plt.ylabel("log of eigenvalue")
     plt.title("eigenspectrum of covariance matrix")
     plt.plot(x, log_eigen)
+    # plt.plot(x, eigen_values)
 
     plt.xlim((min(x), max(x)))
     plt.ylim((min(log_eigen), max(log_eigen)))
@@ -84,6 +81,10 @@ def compute_number_vectors(eigen_pairs, varval):
 
 def plot_2_pc(vec1, vec2, label_vec):
 
+    # print(vec1.shape)
+    # print(vec2.shape)
+    # print(label_vec.shape)
+
     fig = plt.figure()
     ax = plt.subplot(211)
     plt.grid(True)
@@ -95,9 +96,10 @@ def plot_2_pc(vec1, vec2, label_vec):
     # plt.scatter(vec1, vec2)
 
     zipped_tuples = list(zip(vec1, vec2))
+    # print(zipped_tuples)
 
     for i in range(len(zipped_tuples)):
-        color = get_colour_from_label(label_vec[i])
+        color = get_color(label_vec[i])
         plt.scatter(zipped_tuples[i][0], zipped_tuples[i][1], color=color[0], label=color[1])
 
     handles, labels = ax.get_legend_handles_labels()
@@ -129,6 +131,12 @@ def plot_2_pc_cc(vec1, vec2, label_vec, ccs):
     ax.legend(by_label.values(), by_label.keys(), loc=3, prop={'size':10})
 
     plt.show()
+
+def get_color(label):
+    if label:
+        return ['b', "crops"]
+    else:
+        return ['r', "weeds"]
 
 def get_colour_from_label(label):
     colours = ['b', 'g', 'r', 'c', 'm']

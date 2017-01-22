@@ -97,19 +97,27 @@ def principal_ca(train_x, train_y, test_x, test_y):
     pca.fit(train_x)
     # print(pca.n_components_)
 
+    pcs = pca.components_
+    # print(pca.components_.shape)
+    # print(pca.components_)
     sum_val = 0
+
+    v1 = np.dot(train_x, pca.components_[0])
+    v2 = np.dot(train_x, pca.components_[1])
 
     for i, x in enumerate(pca.explained_variance_ratio_):
         sum_val += pca.explained_variance_ratio_[i]
-        print(sum_val)
+        # print(sum_val)
 
-    pca2 = decomposition.PCA(n_components=2)
-    pca2.fit(train_x)
+    eigvalues = pca.explained_variance_ratio_
+
+    # home_pca.plot_eigenspectrum(eigvalues)
+
+    # pca2 = decomposition.PCA(0.90)
+    # pca2.fit(train_x)
     # print(pca2.n_components_)
-    # print(pca2.explained_variance_ratio_)
 
-
-
+    home_pca.plot_2_pc(v1, v2, train_y)
 
 
 def perform_svm(train_x, train_y, test_x, test_y):
