@@ -57,8 +57,8 @@ def logreg(train_x, train_y, test_x, test_y):
     y_pred_train = logreg.predict(train_x)
     y_pred_test = logreg.predict(test_x)
 
-    z_one_loss_test = zero_one_loss(test_y, y_pred_test)
-    z_one_loss_train = zero_one_loss(train_y, y_pred_train)
+    z_one_loss_test = 1 - zero_one_loss(test_y, y_pred_test)
+    z_one_loss_train = 1 - zero_one_loss(train_y, y_pred_train)
 
     print("01 loss test: {}".format(z_one_loss_test))
     print("01 loss train: {}".format(z_one_loss_train))

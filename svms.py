@@ -33,6 +33,9 @@ def svm(data, labels, test, testlab, j):
     print("best parameters: {}".format(clf.best_params_))
 
     print("accuracy on training set: {}".format(clf.score(data, labels)))
+    # print(test)
+    # print(np.mean(test))
+    # print(np.var(test))
     print("accuracy on test set: {}".format(clf.score(test, testlab)))
 
 def norm(train, test):
@@ -78,8 +81,15 @@ def norm(train, test):
     train_std = scaler.transform(trnl)
     test_std = scaler.transform(tenl)
 
-    print(np.var(train_std, axis=0))
-    print(np.var(test_std, axis=0))
+    # print(tenl)
+    # print(test_std)
+    # print(np.mean(tenl))
+    # print(np.mean(test_std))
+    # print(np.var(tenl))
+    # print(np.var(test_std))
+
+    # print(np.var(train_std, axis=0))
+    # print(np.var(test_std, axis=0))
 
     # for i, row in enumerate(train_std):
     #     row[-1] = trl[i]

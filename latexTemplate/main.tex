@@ -136,11 +136,57 @@ The accuracy for the training and test sets is shown below:
     & \text{accuracy}_{\text{test}}       &= 0.969 \\
 \end{align*}
 
-From the accuracy results above, on both the training and test sets, the SVM performed very well overall. This demonstrates the effectiveness of SVMs, especially in comparison to logistic regression.
+From the accuracy results above, on both the training and test sets, the SVMs performed very well overall. This demonstrates the effectiveness of SVMs, especially in comparison to logistic regression.
 
 \subsection{Normalisation}
 
-The normalisation was performed by
+The normalisation was performed by calculating the mean and the standard deviation of the training data. A function, $f_{\text{norm}}$ was formed as below that would result in the training data having mean = 0 and variance = 1.
+
+\[ f_{\text{norm}} = \frac {\xbf - \mu} {\sigma} \]
+
+This function was used to transform the training data to have the above mean and variance. The function was then also used to encode the test data, however with the \emph{training} mean and variance (as we do not know the test mean and variance in most circumstances). \\
+
+This normalised data was then used on the SVMs, resulting in:
+
+\begin{align*}
+    \sigma_{\text{Jaakkola}} &= 1.38   \\
+    \gamma_{\text{Jaakkola}} &= 0.0300 \\
+\end{align*}
+
+with optimum hyperparameters:
+
+\begin{align*}
+    C &= 100 \\
+    \gamma &= 0.0261
+\end{align*}
+
+and test and training accuracy:
+
+\begin{align*}
+    & \text{accuracy}_{\text{training}}   &= 0.983 \\
+    & \text{accuracy}_{\text{test}}       &= 0.969 \\
+\end{align*}
+
+For the logistic regression, the results on the normalised data were:
+
+The parameters of the model were:
+
+\begin{center}
+ [-0.15301671,  0.41886541,  1.20183536,  0.73123418, \\
+   0.47797006,  1.60814454, -0.9043635, -1.69624452, \\
+  -3.2546309, -2.55718762, -1.45943251, -0.27085139, \\
+  -0.80955427]
+\end{center}
+
+with bias:
+
+\[ -3.10513732 \]
+
+The zero-one loss on the training data was: $0.0300$, and on the test data: $0.0383$.
+
+For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$
+
+
 
 % Obligatory citation, and I decided to point to  your text book~\cite{abu2012learning}. The references sit in a separate file, ref.bib.
 %
