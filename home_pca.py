@@ -122,18 +122,18 @@ def plot_2_pc_cc(vec1, vec2, label_vec, cc0, cc1):
 
     zipped_tuples = list(zip(vec1, vec2))
 
-    projected_clusters = list(zip(cc0, cc1))
+    # projected_clusters = list(zip(cc0, cc1))
 
     for i in range(len(zipped_tuples)):
-        color = get_colour_from_label(label_vec[i])
+        color = get_color(label_vec[i])
         plt.scatter(zipped_tuples[i][0], zipped_tuples[i][1], color=color[0], label=color[1])
+
+    plt.scatter(cc0[0], cc0[1], color='g', s=50, marker="^", label="weeds cluster center")
+    plt.scatter(cc1[0], cc1[1], color='m', s=50, marker="^", label="crops cluster center")
 
     handles, labels = ax.get_legend_handles_labels()
     by_label = OrderedDict(zip(labels, handles))
-    ax.legend(by_label.values(), by_label.keys(), loc=3, prop={'size':10})
-
-    plt.plot(projected_clusters[0], color='g', label="0 cluster center")
-    plt.plot(projected_clusters[1], color='o', label="1 cluster center")
+    ax.legend(by_label.values(), by_label.keys(), loc=4, prop={'size':10})
 
     plt.show()
 

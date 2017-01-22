@@ -91,6 +91,8 @@ def normalised_methods():
 
 def clustering(train_x, train_y, test_x, test_y, center_init):
     kmeans = KMeans(n_clusters=2, n_init=1, max_iter=1000, init=center_init, algorithm="full", n_jobs=-1).fit(train_x)
+    # kmeans = KMeans(n_clusters=2, init=center_init, n_jobs=-1).fit(train_x)
+    # kmeans = KMeans(n_clusters=2, n_jobs=-1).fit(train_x)
 
     # comparison = (kmeans.labels_ == train_y)
     # true_values = [x for x in comparison if x == True]
@@ -102,7 +104,7 @@ def clustering(train_x, train_y, test_x, test_y, center_init):
 
 
 def principal_ca(train_x, train_y, test_x, test_y):
-    print(train_x.shape)
+    # print(train_x.shape)
     np.set_printoptions(suppress=True)
 
 
@@ -130,7 +132,7 @@ def principal_ca(train_x, train_y, test_x, test_y):
     # pca2.fit(train_x)
     # print(pca2.n_components_)
 
-    home_pca.plot_2_pc(v1, v2, train_y)
+    # home_pca.plot_2_pc(v1, v2, train_y)
 
     return (pca.components_, v1, v2)
 

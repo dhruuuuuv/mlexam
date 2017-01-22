@@ -11,7 +11,7 @@ import plotly.plotly as py
 import sklearn
 from sklearn import svm
 
-import galaxies, weeds
+import galaxies, weeds, home_pca
 
 # fn to load in the dataset
 def import_dataset(filename):
@@ -65,12 +65,19 @@ def part2():
 
     # print("-- part 2.4 --")
     pcs, v1, v2 = weeds.principal_ca(train_x, train_y, test_x, test_y)
+    pc_2 = pcs[:2, :]
 
     # print("-- part 2.5 --")
     centers = train_x[:2,:]
     kmeans = weeds.clustering(train_x, train_y, test_x, test_y, centers)
-    ccv1 = np.dot(centers, pcs[0])
-    ccv2 = np.dot(centers, pcs[1])
+    final_centroids = kmeans.cluster_centers_
+    ccv1 = np.dot(final_centroids, pcs[0])
+    ccv2 = np.dot(final_centroids, pcs[1])
+    print(final_centroids.shape)
+    print(pcs[0].shape)
+    print(pcs[1].shape)
+    # print(ccv1)
+    # print(ccv2)
     home_pca.plot_2_pc_cc(v1, v2, train_y, ccv1, ccv2)
 
 def main():
