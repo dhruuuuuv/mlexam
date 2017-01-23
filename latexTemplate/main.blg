@@ -1,17 +1,4 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [1] Config.pm:327> INFO - Logfile is 'main.blg'
-[57] biber-darwin:276> INFO - === Sun Jan 22, 2017, 13:23:46
-[58] Biber.pm:333> INFO - Reading 'main.bcf'
-[167] Biber.pm:645> INFO - Found 2 citekeys in bib section 0
-[191] Biber.pm:2977> INFO - Processing section 0
-[218] Biber.pm:3115> INFO - Looking for bibtex format file 'ref.bib' for section 0
-[219] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
-[220] bibtex.pm:895> INFO - Found BibTeX data source 'ref.bib'
-[231] Utils.pm:146> WARN - Datamodel: Entry 'so:norm' (ref.bib): Invalid format '2017-1-22' of date field 'urldate' - ignoring
-[267] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[267] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[268] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'en-US'
-[268] Biber.pm:2858> INFO - No sort tailoring available for locale 'en-US'
-[272] bbl.pm:505> INFO - Writing 'main.bbl' with encoding 'ascii'
-[273] bbl.pm:596> INFO - Output to main.bbl
-[273] Biber.pm:106> INFO - WARNINGS: 1
+[63] biber-darwin:276> INFO - === Mon Jan 23, 2017, 19:06:01
+[64] Biber.pm:333> INFO - Reading 'main.bcf'

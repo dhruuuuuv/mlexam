@@ -226,5 +226,41 @@ The projection of the resulting cluster centers onto the first two principal com
 The cluster centers were projected onto the first two principal components by taking the matrix of the cluster centers and performing the dot product of it against each principal component vector. This results in the projected clusters on each of the principal component vectors.
 
 \newpage
+\section{Generalization Bound for Learning with Multiple Feature Mappings}
+
+\subsection{}
+
+Using the fact that a $\tilde{d}$-dimensional linear separator has $d_{VC} = \tilde{d} + 1$ \cite[p. 52]{abu}, where $\tilde{d}$ is the dimensionality of the transformed data $\in \mathcal{H}_Q$ by $\Phi_Q(\xbf)$.\\
+
+In calculating the dimensionality of the new space, we consider the different combinations of the original $(x_1...x_d)$ points to form the, up to order Q monomials. We may also place an upper bound on the dimension of $\Phi_Q(\xbf)$ by the dimension of $\Phi_Q^+(\xbf)$, as this includes the repetition of identical terms, and therefore will be higher than $\Phi_Q(\xbf)$. To this end, if we consider the terms in order from Q = 0 up to Q, there are $d^Q$ combinations of each order monomial, such as:
+
+\begin{equation*}
+\begin{aligned}[c]
+    Q=0, \\
+    Q=1, \\
+    Q=2, \\
+    \\
+\end{aligned}
+\begin{aligned}[c]
+    &1 \; &= d^0 = 1 \\
+    &x_1, x_2, ..., x_d \; &= d^1 = d \\
+    &x_1^2, x_1x_2, ..., x_d^2 \; &= d^2 \\
+    \text{etc.}
+\end{aligned}
+\end{equation*}
+
+Which results in $\tilde{d}$ equal to:
+
+\[ \sum^Q_{i=0} d^i \]
+
+and therefore $d_{VC}$ equal to:
+
+\[ \big( \sum^Q_{i=0} d^i \big) + 1 \]
+
+There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that we can place an upper bound on this, and:
+
+\[ d_{VC} (\mathcal{H}_Q) = (Q + 1) \cdot d^Q  \]
+
+\newpage
 \printbibliography
 \end{document}

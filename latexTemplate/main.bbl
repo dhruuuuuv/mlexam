@@ -54,6 +54,25 @@
       \endverb
       \warn{\item Datamodel: Entry 'so:norm' (ref.bib): Invalid format '2017-1-22' of date field 'urldate' - ignoring}
     \endentry
+    \entry{abu}{book}{}
+      \name{author}{3}{}{%
+        {{hash=de934bfee8ca33b64a9ad2bfd699ba84}{Abu-Mostafa}{A\bibinithyphendelim M\bibinitperiod}{Yaser\bibnamedelima S}{Y\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{hash=e1d3e42e9c8545276945df1724e0d498}{Magdon-Ismail}{M\bibinithyphendelim I\bibinitperiod}{Malik}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=ec4aa4123f07d57016afedecdf45ed9e}{Lin}{L\bibinitperiod}{Hsuan-Tien}{H\bibinithyphendelim T\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {AMLBook Singapore}%
+      }
+      \strng{namehash}{489525f18e6388f1948ca5e16c0dfb38}
+      \strng{fullhash}{489525f18e6388f1948ca5e16c0dfb38}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning from data}
+      \field{volume}{4}
+      \field{year}{2012}
+    \endentry
   \endsortlist
 \endrefsection
 \endinput
