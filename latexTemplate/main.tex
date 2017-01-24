@@ -259,7 +259,60 @@ and therefore $d_{VC}$ equal to:
 
 There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that we can place an upper bound on this, and:
 
-\[ d_{VC} (\mathcal{H}_Q) = (Q + 1) \cdot d^Q  \]
+\[ d_{VC} (\mathcal{H}_Q) \leq (Q + 1) \cdot d^Q  \]
+
+\subsection{}
+Using the bound in equation 2.14 \cite[p. 58]{abu}, we substitute in the value for the $d_{VC}$, and get the following bound, with probability at least $1 - \delta, \forall_{h \in \mathcal{H}_Q}$ (N.B. here, and from now on, I am using the derivations from the book, i.e. from the two-sided Hoeffding):
+
+\[
+    L(h) \leq \hat{L} (h, S) + \sqrt { \frac {8} {N} \ln \bigg( \frac {4 \cdot ( (2N)^{(Q + 1) \cdot d^Q} + 1) } {\delta} \bigg) }
+\]
+
+\subsection{}
+
+If we consider the polynomial kernel with the 2nd order transform:
+
+\[ \Phi_2(\xbf) = (1, x_1, x_2, ... x_d, x_d) \]
+
+and then the product:
+
+\[ \Phi_2(\xbf)^T \Phi_2(\xbf') = 1 + \sum^d_{i=1} x_ix_i' + \sum^d_{i=1} x_ix_jx_i'x_j' \]
+
+which is equivalent to:
+
+\[ 1 + (\xbf^T \xbf') + (\xbf^T \xbf')^2 \] \cite[p. 8-34]{abu} \\
+
+For the Qth order transform, this product equals:
+
+\[ \Phi_Q(\xbf)^T\Phi_Q(\xbf') = 1 + (\xbf^T \xbf') + (\xbf^T \xbf')^2 + ... (\xbf^T \xbf')^Q \\
+= \sum_{i=0}^{Q} (\xbf^T \xbf')^i
+\]
+
+We can place an upper bound on this as the Qth polynomial kernel, which equals:
+
+\[ \sum_{i=0}^{Q} (\xbf^T \xbf')^i \leq (1 + \xbf^T \xbf)^Q \]
+
+as it includes all the other terms from the sum, just with higher coefficients.\\
+
+We note that we can bound $\Phi_Q(\xbf)$ by $\Phi^+_Q(\xbf)$, as it includes more terms due to the repeated identical terms, and if we set the repeated terms equal to 0, they are equivalent. \\
+
+From the above, if we consider that:
+
+\begin{align*}
+    || \xbf || &\leq 1 \\
+    \sqrt{ \langle \xbf, \xbf \rangle } &\leq 1 \\
+    \langle \xbf, \xbf \rangle &\leq 1 \\
+    \xbf^T \xbf &\leq 1 \\
+    \xbf^T \xbf + 1 &\leq 2 \\
+    (\xbf^T \xbf + 1)^Q &\leq 2^Q \\
+    (\Phi_Q^+)T(\Phi_Q^+) \leq (\xbf^T \xbf + 1)^Q &\leq 2^Q \\
+    \sqrt{\Phi_Q^+(\xbf)^T\Phi_Q^+(\xbf)} \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
+    \sqrt{\langle \Phi_Q^+(\xbf), \Phi_Q^+(\xbf) \rangle} \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
+    || \Phi_Q^+(\xbf) || \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
+\end{align*}
+
+\subsection{}
+
 
 \newpage
 \printbibliography
