@@ -1,17 +1,15 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [0] Config.pm:327> INFO - Logfile is 'main.blg'
-[54] biber-darwin:276> INFO - === Wed Jan 25, 2017, 14:23:00
-[54] Biber.pm:333> INFO - Reading 'main.bcf'
-[172] Biber.pm:645> INFO - Found 5 citekeys in bib section 0
-[198] Biber.pm:2977> INFO - Processing section 0
-[224] Biber.pm:3115> INFO - Looking for bibtex format file 'ref.bib' for section 0
-[227] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
-[227] bibtex.pm:895> INFO - Found BibTeX data source 'ref.bib'
-[240] Utils.pm:146> WARN - Datamodel: Entry 'so:norm' (ref.bib): Invalid format '2017-1-22' of date field 'urldate' - ignoring
-[300] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[300] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[300] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'en-US'
-[300] Biber.pm:2858> INFO - No sort tailoring available for locale 'en-US'
-[306] bbl.pm:505> INFO - Writing 'main.bbl' with encoding 'ascii'
-[307] bbl.pm:596> INFO - Output to main.bbl
-[307] Biber.pm:106> INFO - WARNINGS: 1
+[64] biber-darwin:276> INFO - === Wed Jan 25, 2017, 17:45:08
+[64] Biber.pm:333> INFO - Reading 'main.bcf'
+[165] Biber.pm:645> INFO - Found 4 citekeys in bib section 0
+[201] Biber.pm:2977> INFO - Processing section 0
+[226] Biber.pm:3115> INFO - Looking for bibtex format file 'ref.bib' for section 0
+[228] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[229] bibtex.pm:895> INFO - Found BibTeX data source 'ref.bib'
+[295] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[295] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[296] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'en-US'
+[296] Biber.pm:2858> INFO - No sort tailoring available for locale 'en-US'
+[302] bbl.pm:505> INFO - Writing 'main.bbl' with encoding 'ascii'
+[303] bbl.pm:596> INFO - Output to main.bbl

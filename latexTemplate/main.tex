@@ -36,7 +36,7 @@
 \subsection{Data preparation}
 The variance of the red-shifts in the spectroscopic training data was calculated to be:
 \[ 0.0106 \]
-(where from now on, unless specified, values are shown to 3 significant places). \\
+(where from now on, unless specified, values are shown to 3 significant figures). \\
 
 The MSE on the test SDSS predictions was calculated to be:
 \[ 0.000812 \]
@@ -55,15 +55,13 @@ The parameters of the model were (taken from the announcement):
 0.0017252,0.00435176]
 \end{center}
 
-*** CHECK AND MAYBE PLUG THESE INTO THE MODEL ***
-
 with bias term:
 
 \[ -0.801881 \]
-The error on the training data was calculated to be $0.00187$, and on the test data was $0.00187$ also. The errors noramlised by the variance, $\sigma^2_{red}$ were equal to $0.176$ for both the test and the training data. \\
+The error on the training data was calculated to be $0.00187$, and on the test data was $0.00187$ also. The errors normalised by the variance, $\sigma^2_{red}$ were equal to $0.176$ for both the test and the training data. \\
 
 % FINISH
-This normalised error falling below one signifies that...
+This normalised error gives a way of fairly comparing the different training and testing values. We use the training variance as typically we would not be able to calculate the variance of the testing data. The error falling below one signifies that the MSE result is more accurate. A lower value shows a better result, with less normalised error.
 
 \subsection{Non-Linear regression}
 
@@ -75,7 +73,7 @@ The KNN algorithm uses a distance metric to calculate the distance between a (se
 
 My method involved using model selection methods such as cross-validation and grid search. Since this is model selection, cross validation was needed as I only use the training data during model selection. This gave us a better way to prevent overfitting of the training data. I used the \texttt{GridSearchCV} package from \texttt{sklearn}. The range of possible $k$ values was given as the odd numbers between 1 and 29. This performed a 5-fold cross validation on each of the possible values of $k$, averaging out the resulting error (i.e. splitting the data into 5 equal chunks, using 4 as the training set, and 1 as the validation set, and then cycling through all possible 5 validation sets). The error function used in the algorithm was the mean squared error.\\
 
-This method resulted in the optimum hyperparameter as $k = 7$, with a MSE of $0.00118$ on the test data, and a MSE of $0.000870$. \\
+This method resulted in the optimum hyperparameter as $k = 7$, with a MSE of $0.00118$ on the test data, and a MSE of $0.000870$ on the training data. \\
 
 Clearly, the KNN Regressor worked better on the training data, which is to be expected due to the model's simplicity in using the $k$ training points' average to return the regression results - therefore the training points are bound to have a low MSE. In comparison, the training data in the linear regressor performed the same as the test data. The difference in this would be due to the nature of a linear regressor, which would 'average out' the regression line over the points, thus leading to a small MSE on both the training and test data. On the test data, the KNN Regressor did perform a bit better than the linear regressor - perhaps due to the non-linear nature of KNN capturing the underlying nature of the data slightly more accurately. Overall, I believe the KNN method worked well as I had a relatively low variance on the data - KNN can be skewed by big outliers in the data. The cross-validation helped to prevent overfitting on the data, which may have also caused the error on the test data to drop in comparison to the linear regressor.
 
@@ -83,7 +81,7 @@ Clearly, the KNN Regressor worked better on the training data, which is to be ex
 \section{Weed}
 
 \subsection{Logistic Regression}
-The logistic regression was done in Python, using the \texttt{LogisticRegression} package from \texttt{sklearn}. This implementation uses the logistic function. We are trying to classify testing points according to binary labels (0 - weeds, 1 - crops). The algorithm tries to minimise the following function:
+The logistic regression was done in Python, using the \texttt{LogisticRegression} package from \texttt{sklearn}. This implementation uses the logistic function. I am trying to classify testing points according to binary labels (0 - weeds, 1 - crops). The algorithm tries to minimise the following function:
 
 \[ \min_{w, c} \frac{1} {2} w^T w + C \sum^n_{i=1} \log e ^{(-y_i(X^t_i \; w + c)) +1)} \]
 
@@ -144,7 +142,7 @@ The normalisation was performed by calculating the mean and the standard deviati
 
 \[ f_{\text{norm}} = \frac {\xbf - \mu} {\sigma} \]
 
-This function was used to transform the training data to have the above mean and variance. The function was then also used to encode the test data, however with the \emph{training} mean and variance (as I do not know the test mean and variance in most circumstances). \\
+This function was used to transform the training data to have the above mean and variance. The function was then also used to encode the test data, however with the \emph{training} mean and variance (as the test mean and variance is unknown in most circumstances). \\
 
 This normalised data was then used on the SVMs, resulting in:
 
@@ -167,7 +165,7 @@ and test and training accuracy:
     & \text{accuracy}_{\text{test}}       &= 0.969 \\
 \end{align*}
 
-For the logistic regression, the results on the normalised data were:
+For the logistic regression on the normalised data:\\
 
 The parameters of the model were:
 
@@ -182,16 +180,16 @@ with bias:
 
 \[ -3.10513732 \]
 
-The zero-one loss on the training data was: $0.0300$, and on the test data: $0.0383$.
+The zero-one loss on the training data was: $0.0300$, and on the test data: $0.0383$. \\
 
-For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$, this places a different level of importance on different features. In the training data, the ranges of the different features spanned from $112$ for feature 1, to $7205$ for feature 4. This squared Euclidian distance measure means that a difference of 1 in the 4th feature (a tiny amount of difference, relative to the range is equivalent to, about 0.01\%) would be equivalent to a difference of approximately 0.90\% in the 1st feature. This shows that small differences are exaggerated in feature 4 from the Euclidian distance calculation. By normalising the data, I even out these differences in ranges to adjust for this problem. In the transformed data, the range of feature 1 is 10.78, and feature 4 is 4.80, which means distance in both is much more relative. The results also converged faster than without normalising the data first. \\
+For SVMs, the accuracy improved marginally on the normalised training data, but stayed constant for the normalised test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$, this places a different level of importance on different features. In the training data, the ranges of the different features spanned from $112$ for feature 1, to $7205$ for feature 4. This squared Euclidian distance measure means that a difference of 1 in the 4th feature (a tiny amount of difference, relative to the range is equivalent to, about 0.01\%) would be equivalent to a difference of approximately 0.90\% in the 1st feature. This shows that small differences are exaggerated in feature 4 from the Euclidian distance calculation. By normalising the data, these differences in ranges are evened out to adjust for this problem. In the transformed data, the range of feature 1 is 10.78, and feature 4 is 4.80, which means distance in both is much more relative. The results also converged faster than without the data normalisation. \\
 
-However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. As I can see, the normalisation did not have as much of an effect as with the SVMs. This is due to the fact that algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
+However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. The normalisation did not have as much of an effect as with the SVMs. This is due to the fact that the algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
 
-With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is by saying that random forests are invariant to monotonic transformations of individual features.\cite{so:norm}
+With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is by saying that random forests are invariant to monotonic transformations of individual features.
 
 \subsection{Principal Component Analysis}
-The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in Python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimensionality. \\
+The PCA was performed using a combination of the \texttt{sklearn.decomposition.PCA} package in Python, and previous code I had written for an assignment. The package uses Singular Value Decomposition to project the data to a lower dimension. \\
 
 \begin{figure}[h]
 \includegraphics[width=16cm]{eig.png}
@@ -213,7 +211,7 @@ Looking at the plot, one can see how important these first 2 principal component
 
 \subsection{Clustering}
 
-The K-Means, was performed using a combination of the \texttt{sklearn.cluster.KMeans} package in Python, and previous code I had written for an assignment. The K-Means implementation was used with $k = 2$. The normal full K-Means algorithm was used with a maximum of 300 iterations. The cluster start points were initialised to the first 2 points in the training set.\\
+The K-Means Algorithm was implemented using a combination of the\\ \texttt{sklearn.cluster.KMeans} package in Python, and previous code I had written for an assignment. The K-Means implementation was used with $k = 2$. The standard full K-Means algorithm was used with a maximum of 300 iterations. The cluster start points were initialised to the first 2 points in the training set.\\
 
 \begin{figure}[h]
 \includegraphics[width=16cm]{2pc_cc.png}
@@ -221,7 +219,7 @@ The K-Means, was performed using a combination of the \texttt{sklearn.cluster.KM
 \label{fig:2pc_cc}
 \end{figure}
 
-The projection of the resulting cluster centers onto the first two principal components can be seen in Figure \ref{fig:2pc_cc}. From the plot, the K-Means algorithm performed very well on the data projected onto the first 2 principal components, as by-eye, each cluster center sits approximately in the center of each of the crops and weeds clusters.
+The projection of the resulting cluster centers onto the first two principal components can be seen in Figure \ref{fig:2pc_cc}. From the plot, the K-Means algorithm performed very well on the data projected onto the first 2 principal components, as by-eye, each cluster center sits approximately in the center of each of the crops and weeds clusters. The algorithm classifies by measuring the distance between the test point and the two cluster centers, and returning the class of the closest cluster center. \\
 
 The cluster centers were projected onto the first two principal components by taking the matrix of the cluster centers and performing the dot product of it against each principal component vector. This results in the projected clusters on each of the principal component vectors.
 
@@ -230,9 +228,9 @@ The cluster centers were projected onto the first two principal components by ta
 
 \subsection{}
 
-Using the fact that a $\tilde{d}$-dimensional linear separator has $d_{VC} = \tilde{d} + 1$ \cite[p. 52]{abu}, where $\tilde{d}$ is the dimensionality of the transformed data $\in \mathcal{H}_Q$ by $\Phi_Q(\xbf)$.\\
+Note that a $\tilde{d}$-dimensional linear separator has $d_{VC} = \tilde{d} + 1$ \cite[p. 52]{abu}, where $\tilde{d}$ is the dimensionality of the transformed data $\in \mathcal{H}_Q$ by $\Phi_Q(\xbf)$.\\
 
-In calculating the dimensionality of the new space, I consider the different combinations of the original $(x_1...x_d)$ points to form the, up to order Q monomials. We may also place an upper bound on the dimension of $\Phi_Q(\xbf)$ by the dimension of $\Phi_Q^+(\xbf)$, as this includes the repetition of identical terms, and therefore will be higher than $\Phi_Q(\xbf)$. To this end, if I consider the terms in order from Q = 0 up to Q, there are $d^Q$ combinations of each order monomial, such as:
+In calculating the dimensionality of the new space, the different combinations of the original $(x_1...x_d)$ points to form the up to order Q monomials were considered. An upper bound may also be placed on the dimension of $\Phi_Q(\xbf)$ by the dimension of $\Phi_Q^+(\xbf)$, as this includes the repetition of identical terms, and therefore will be higher than $\Phi_Q(\xbf)$. To this end, if the terms are considered in order from Q = 0 up to Q, there are $d^Q$ combinations of each order monomial, such as:
 
 \begin{equation*}
 \begin{aligned}[c]
@@ -257,12 +255,12 @@ and therefore $d_{VC}$ equal to:
 
 \[ \big( \sum^Q_{i=0} d^i \big) + 1 \]
 
-There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that I can place an upper bound on this, and:
+There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that an upper bound can be placed on this, and:
 
 \[ d_{VC} (\mathcal{H}_Q) \leq (Q + 1) \cdot d^Q  \]
 
 \subsection{}
-Using the bound in equation 2.14 \cite[p. 58]{abu}, I substitute in the value for the $d_{VC}$, and get the following bound, with probability at least $1 - \delta, \forall_{h \in \mathcal{H}_Q}$ (N.B. here, and from now on, I am using the derivations from the book, i.e. from the two-sided Hoeffding):
+Using the bound in equation 2.14 \cite[p. 58]{abu}, and substituting in the value for the $d_{VC}$, to get the following bound, with probability at least $1 - \delta, \forall_{h \in \mathcal{H}_Q}$ (N.B. here, and from now on, I am using the derivations from the book, i.e. from the two-sided Hoeffding):
 
 \[
     L(h) \leq \hat{L} (h, S) + \sqrt { \frac {8} {N} \ln \bigg( \frac {4 \cdot ( (2N)^{(Q + 1) \cdot d^Q} + 1) } {\delta} \bigg) }
@@ -270,7 +268,7 @@ Using the bound in equation 2.14 \cite[p. 58]{abu}, I substitute in the value fo
 
 \subsection{}
 
-If I consider the polynomial kernel with the 2nd order transform:
+If the polynomial kernel with the 2nd order transform is considered:
 
 \[ \Phi_2(\xbf) = (1, x_1, x_2, ... x_d, x_d) \]
 
@@ -288,13 +286,13 @@ For the Qth order transform, this product equals:
 = \sum_{i=0}^{Q} (\xbf^T \xbf')^i
 \]
 
-We can place an upper bound on this as the Qth polynomial kernel, which equals:
+An upper bound on this can be placed as the Qth polynomial kernel, which equals:
 
 \[ \sum_{i=0}^{Q} (\xbf^T \xbf')^i \leq (1 + \xbf^T \xbf)^Q \]
 
 as it includes all the other terms from the sum, just with higher coefficients.\\
 
-We note that I can bound $\Phi_Q(\xbf)$ by $\Phi^+_Q(\xbf)$, as it includes more terms due to the repeated identical terms, and if I set the repeated terms equal to 0, they are equivalent. \\
+Note that I may bound $\Phi_Q(\xbf)$ by $\Phi^+_Q(\xbf)$, as it includes more terms due to the repeated identical terms, and if I set the repeated terms equal to 0, they are equivalent. \\
 
 From the above, consider that:
 
@@ -313,7 +311,7 @@ From the above, consider that:
 
 \subsection{}
 
-In trying to derive a bound, I considered:
+Consider that:
 
 \[
 || \Phi_Q(\xbf) || \leq \sqrt{ 2^Q } \in \mathbb{R}^{\tilde{d}}
@@ -325,23 +323,23 @@ Using an adjusted version of Theorem 3.8 \cite[p. 18]{mln}
 
 \[ d_{VC} (\mathcal{H}_\rho) \leq \lceil \nicefrac{R^2} {\rho^2} \rceil \]
 
-I adjusted this as I am considering the space of hyperplanes: $ \mathcal{H}_\rho = \{ (w) : || w || \leq \nicefrac {1} {\rho} \}$. However, the input space is in $\mathbb{R}^{\tilde{d}}$ defined by $\Phi_Q (\xbf)$, so from the previous answer, as $\xbf$ is a ball of radius 1, in the tranformed space we have that $R = \sqrt{ 2^Q }$.\\
+I adjusted this as I am considering the space of hyperplanes: $ \mathcal{H}_\rho = \{ (w) : || \wbf || \leq \nicefrac {1} {\rho} \}$. However, the input space is in $\mathbb{R}^{\tilde{d}}$ defined by $\Phi_Q (\xbf)$, so from the previous answer, as $\xbf$ is a ball of radius 1, in the tranformed space we have that $R = \sqrt{ 2^Q }$.\\
 
 Plugging this into the above result yields:
 
 \[ d_{VC} (\mathcal{H}_\rho) \leq \lceil \nicefrac { \big( \sqrt{ 2^Q } \big) ^2 } { \rho^2 } \rceil = \lceil \nicefrac{2^Q} {\rho^2} \rceil \]
 
 Now, considering $\mathcal{H}$ as a nested sequence of subspaces, $\hh_1 \subset \hh_2 ... \subset \hh_d = \hh$, and defining $\hh_i = \hh_{\rho = \nicefrac {2^Q} {i}}$, where $i = \nicefrac {2^Q} {\rho^2}$. Also note that if $h = w \in \hh_i \setminus \hh_{i-1}$,
-then $i = \lceil 2^Q \cdot || w ||^2 \rceil $ as:
+then $i = \lceil 2^Q \cdot || \wbf ||^2 \rceil $ as:
 
 \begin{align*}
-    || w || \leq \frac {1} {\rho} \\
-    || w ||^2 \leq \frac {1} {\rho}^2 \\
-    2^Q \cdot || w ||^2 \leq \frac {2^Q} {\rho^2} \\
-    \lceil 2^Q \cdot || w ||^2 \rceil = i \\
+    || \wbf || \leq \frac {1} {\rho} \\
+    || \wbf ||^2 \leq \frac {1} {\rho}^2 \\
+    2^Q \cdot || \wbf ||^2 \leq \frac {2^Q} {\rho^2} \\
+    \lceil 2^Q \cdot || \wbf ||^2 \rceil = i \\
 \end{align*}
 
-We also take
+I can also take
 
 \[
     \delta_i = \frac {1} {i}{i+1}

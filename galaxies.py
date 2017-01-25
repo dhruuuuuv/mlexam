@@ -43,8 +43,8 @@ def knn(gtrain, gtest, labeltrain, labeltest):
     acc = grid.score(gtest, labeltest)
     acc2 = grid.score(gtrain, labeltrain)
 
-    print("grid search mse test: {}".format(acc))
-    print("grid search mse train: {}".format(acc2))
+    print("grid search mse test: {}".format(-acc))
+    print("grid search mse train: {}".format(-acc2))
     print("grid search best param: {}".format(grid.best_params_))
 
     # k = 3

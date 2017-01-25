@@ -36,24 +36,6 @@
       \verb https://en.wikipedia.org/w/index.php?title=Coordinate_descent&oldid=747699222
       \endverb
     \endentry
-    \entry{so:norm}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=f4d01ef9d8ab3de5c3ce1808ef7a97b3}{Ansari}{A\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{f4d01ef9d8ab3de5c3ce1808ef7a97b3}
-      \strng{fullhash}{f4d01ef9d8ab3de5c3ce1808ef7a97b3}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Stats.stackexchange.com}
-      \field{title}{Stack Overflow - Normalisation SVM, Random Forests}
-      \field{year}{2017}
-      \verb{url}
-      \verb http://stats.stackexchange.com/questions/57010/is-it-essential-to-do-normalization-for-svm-and-random-forest
-      \endverb
-      \warn{\item Datamodel: Entry 'so:norm' (ref.bib): Invalid format '2017-1-22' of date field 'urldate' - ignoring}
-    \endentry
     \entry{abu}{book}{}
       \name{author}{3}{}{%
         {{hash=de934bfee8ca33b64a9ad2bfd699ba84}{Abu-Mostafa}{A\bibinithyphendelim M\bibinitperiod}{Yaser\bibnamedelima S}{Y\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
