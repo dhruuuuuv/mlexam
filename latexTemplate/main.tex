@@ -332,7 +332,7 @@ Plugging this into the above result yields:
 \[ d_{VC} (\mathcal{H}_\rho) \leq \lceil \nicefrac { \big( \sqrt{ 2^Q } \big) ^2 } { \rho^2 } \rceil = \lceil \nicefrac{2^Q} {\rho^2} \rceil \]
 
 Now, considering $\mathcal{H}$ as a nested sequence of subspaces, $\hh_1 \subset \hh_2 ... \subset \hh_d = \hh$, and defining $\hh_i = \hh_{\rho = \nicefrac {2^Q} {i}}$, where $i = \nicefrac {2^Q} {\rho^2}$. Also note that if $h = w \in \hh_i \setminus \hh_{i-1}$,
-then $i = \lceil 2^Q \cdot || w ||^2 \rceil $, as:
+then $i = \lceil 2^Q \cdot || w ||^2 \rceil $ as:
 
 \begin{align*}
     || w || \leq \frac {1} {\rho} \\
@@ -340,6 +340,12 @@ then $i = \lceil 2^Q \cdot || w ||^2 \rceil $, as:
     2^Q \cdot || w ||^2 \leq \frac {2^Q} {\rho^2} \\
     \lceil 2^Q \cdot || w ||^2 \rceil = i \\
 \end{align*}
+
+We also take
+
+\[
+    \delta_i = \frac {1} {i}{i+1}
+\]
 
 Using the result from before gives:
 
@@ -351,8 +357,8 @@ which gives through Theorem 3.7 \cite[p.18]{mln}:
     \mathbb{P} \Bigg\{
         \exists h \in \hh_i : L(h) \geq \hat{L} (h, S) +
         \sqrt {
-            \frac {8} {n} \cdot
-            \frac { \ln \big(
+            \frac {8} {n} \cdot \ln
+            \frac  { \big(
             4 \big(
             ( 2n )^i + 1
             \big)
@@ -365,8 +371,8 @@ which gives through Theorem 3.7 \cite[p.18]{mln}:
     \mathbb{P} \Bigg\{
         \exists h \in \hh_i : L(h) \geq \hat{L} (h, S) +
         \sqrt {
-            \frac {8} {n} \cdot
-            \frac { \ln \big(
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
             4 \big(
                 ( 2n )^\cw + 1
             \big)
@@ -376,6 +382,106 @@ which gives through Theorem 3.7 \cite[p.18]{mln}:
         }
     \Bigg\}
 \]
+\[ =
+    \mathbb{P} \Bigg\{
+        \exists h \in \bigcup^d_{i=1 }\hh_i \setminus \hh_{i-1} : L(h) \geq \hat{L} (h, S) + \]
+\[        \sqrt {
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
+            4 \big(
+                ( 2n )^\cw + 1
+            \big)
+            \cdot
+            \big( \cw \cdot (\cw + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
+\[ = \sum^d_{i=1}
+    \mathbb{P} \Bigg\{
+        \exists h \in \bigcup^d_{i=1 }\hh_i \setminus \hh_{i-1} : L(h) \geq \hat{L} (h, S) + \]
+\[        \sqrt {
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
+            4 \big(
+                ( 2n )^\cw + 1
+            \big)
+            \cdot
+            \big( \cw \cdot (\cw + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
+\[ = \sum^d_{i=1}
+    \mathbb{P} \Bigg\{
+        \exists h \in \hh_i \setminus \hh_{i-1} : L(h) \geq \hat{L} (h, S) + \]
+\[        \sqrt {
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
+            4 \big(
+                ( 2n )^\cw + 1
+            \big)
+            \cdot
+            \big( \cw \cdot (\cw + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
+\[ = \sum^d_{i=1}
+    \mathbb{P} \Bigg\{
+        \exists h \in \hh_i \setminus \hh_{i-1} : L(h) \geq \hat{L} (h, S) +
+        \sqrt {
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
+            4 \big(
+                ( 2n )^i + 1
+            \big)
+            \cdot
+            \big( i \cdot (i + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
+\[ \leq \sum^d_{i=1}
+    \mathbb{P} \Bigg\{
+        \exists h \in \hh_i : L(h) \geq \hat{L} (h, S) +
+        \sqrt {
+            \frac {8} {n} \cdot \ln
+            \frac { \big(
+            4 \big(
+                ( 2n )^i + 1
+            \big)
+            \cdot
+            \big( i \cdot (i + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
+Then using Hoeffding's
+\[
+    \leq \sum^d_{i=1} \delta_i = \sum^d_{i=1} \frac {1} {i \cdot (i + 1)} =
+    \delta \sum^d_{i=1} \frac {1}
+    {i \cdot (i + 1)} \leq \delta \sum^\infty_{i=1} \frac {1} {i \cdot (i + 1)} = \delta
+\]
+
+This model of proof was taken from the lecture notes. \cite[p. 19]{mln} \\
+
+Therefore, the bound on $h \in \hh$, w.p. at least $ 1 - \delta$ is:
+
+\[
+    L(h) \leq \hat{L} (h, S) +
+    \sqrt {
+        \frac {8} {n} \cdot \ln
+        \frac { \big(
+        4 \big(
+            ( 2n )^\cw + 1
+        \big)
+        \cdot
+        \big( \cw \cdot (\cw + 1) \big)
+        \big) } {\delta}
+    }
+\]
+
 
 \subsection{}
 

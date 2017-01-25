@@ -2219,9 +2219,8 @@
     <bcf:citekey order="5">abu</bcf:citekey>
     <bcf:citekey order="6">mln</bcf:citekey>
     <bcf:citekey order="7">mln</bcf:citekey>
-    <bcf:citekey order="8">mln</bcf:citekey>
-    <bcf:citekey order="9">mla</bcf:citekey>
-    <bcf:citekey order="10">abu</bcf:citekey>
+    <bcf:citekey order="8">mla</bcf:citekey>
+    <bcf:citekey order="9">abu</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none" type="entry" sortscheme="none">
   <bcf:sorting>

@@ -1,14 +1,15 @@
 # Fdb version 3
-["biber main"] 1485350579 "main.bcf" "main.bbl" "main" 1485350589
-  "main.bcf" 1485350588 100352 b8d3cd63f032487c95198c86e849a71c ""
-  "ref.bib" 1485342994 1010 c03b6c6cc13f5df4713bfcb2a424408e ""
+["bibtex main"] 1485350076 "main.aux" "main.bbl" "main" 1485350080
+  "main.aux" 1485350073 2824 fbff0967eda386e1e2e7aad30879a585 ""
+  "main.bcf" 1485350073 100306 7148bc3167efaba91a02612e7dabc115 ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1485350587 "main.tex" "main.pdf" "main" 1485350589
+["pdflatex"] 1485350078 "main.tex" "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.pdf" "main" 1485350080
   "./2pc.png" 1485101571 61604 20d3b13db14a376c52e0fdbc8570c07b ""
   "./2pc_cc.png" 1485115203 69282 9fdd46659c29caad29203afae93dcc63 ""
   "./eig.png" 1485101559 31437 d9afadcbbae0d66dc904bd4494090bc0 ""
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.aux" 1485350079 2824 fbff0967eda386e1e2e7aad30879a585 ""
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.run.xml" 1485350079 2395 59dc93792a4914debeef33faa3b94504 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -199,14 +200,16 @@
   "2pc_cc.png" 1485115203 69282 9fdd46659c29caad29203afae93dcc63 ""
   "Macros.tex" 1485346359 4499 bd62a31c740e2ebb6a09793bb27dd054 ""
   "eig.png" 1485101559 31437 d9afadcbbae0d66dc904bd4494090bc0 ""
-  "main.aux" 1485350588 2824 fbff0967eda386e1e2e7aad30879a585 ""
-  "main.bbl" 1485350581 4308 858fbc011c09a3eb7a6944e17ea3b595 "biber main"
-  "main.run.xml" 1485350588 2395 be110cb7f98d620e4b01884da77a2651 ""
-  "main.tex" 1485350586 22650 28d90308717af266979fb8a34dd7361e ""
-  "ref.bib" 1485342994 1010 c03b6c6cc13f5df4713bfcb2a424408e ""
+  "main.bbl" 1485350076 0 d41d8cd98f00b204e9800998ecf8427e "bibtex main"
+  "main.tex" 1485350070 22409 2733875cc906073c2c63acc9ee8c2e45 ""
   (generated)
-  "main.bcf"
-  "main.run.xml"
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.aux"
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.bcf"
   "main.aux"
-  "main.log"
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.run.xml"
+  "main.run.xml"
   "main.pdf"
+  "main.log"
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.pdf"
+  "main.bcf"
+  "/Users/dhruv/Google Drive/cph/modules/ml/assignments/exam/.latex/main.log"
