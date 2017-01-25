@@ -308,10 +308,74 @@ From the above, consider that:
     (\Phi_Q^+)T(\Phi_Q^+) \leq (\xbf^T \xbf + 1)^Q &\leq 2^Q \\
     \sqrt{\Phi_Q^+(\xbf)^T\Phi_Q^+(\xbf)} \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
     \sqrt{\langle \Phi_Q^+(\xbf), \Phi_Q^+(\xbf) \rangle} \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
-    || \Phi_Q^+(\xbf) || \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
+    || \Phi_Q(\xbf) || \leq \sqrt{ (\xbf^T \xbf + 1)^Q} &\leq \sqrt{2^Q} \\
 \end{align*}
 
 \subsection{}
+
+In trying to derive a bound, I considered:
+
+\[
+|| \Phi_Q(\xbf) || \leq \sqrt{ 2^Q } \in \mathbb{R}^{\tilde{d}}
+\]
+
+from the above exercise.\\
+
+Using an adjusted version of Theorem 3.8 \cite[p. 18]{mln}
+
+\[ d_{VC} (\mathcal{H}_\rho) \leq \lceil \nicefrac{R^2} {\rho^2} \rceil \]
+
+I adjusted this as I am considering the space of hyperplanes: $ \mathcal{H}_\rho = \{ (w) : || w || \leq \nicefrac {1} {\rho} \}$. However, the input space is in $\mathbb{R}^{\tilde{d}}$ defined by $\Phi_Q (\xbf)$, so from the previous answer, as $\xbf$ is a ball of radius 1, in the tranformed space we have that $R = \sqrt{ 2^Q }$.\\
+
+Plugging this into the above result yields:
+
+\[ d_{VC} (\mathcal{H}_\rho) \leq \lceil \nicefrac { \big( \sqrt{ 2^Q } \big) ^2 } { \rho^2 } \rceil = \lceil \nicefrac{2^Q} {\rho^2} \rceil \]
+
+Now, considering $\mathcal{H}$ as a nested sequence of subspaces, $\hh_1 \subset \hh_2 ... \subset \hh_d = \hh$, and defining $\hh_i = \hh_{\rho = \nicefrac {2^Q} {i}}$, where $i = \nicefrac {2^Q} {\rho^2}$. Also note that if $h = w \in \hh_i \setminus \hh_{i-1}$,
+then $i = \lceil 2^Q \cdot || w ||^2 \rceil $, as:
+
+\begin{align*}
+    || w || \leq \frac {1} {\rho} \\
+    || w ||^2 \leq \frac {1} {\rho}^2 \\
+    2^Q \cdot || w ||^2 \leq \frac {2^Q} {\rho^2} \\
+    \lceil 2^Q \cdot || w ||^2 \rceil = i \\
+\end{align*}
+
+Using the result from before gives:
+
+\[ d_{VC} (\mathcal{H}_i) = i\]
+
+which gives through Theorem 3.7 \cite[p.18]{mln}:
+
+\[
+    \mathbb{P} \Bigg\{
+        \exists h \in \hh_i : L(h) \geq \hat{L} (h, S) +
+        \sqrt {
+            \frac {8} {n} \cdot
+            \frac { \ln \big(
+            4 \big(
+            ( 2n )^i + 1
+            \big)
+            \big ) } {\delta_i}
+        }
+    \Bigg\} \leq \delta_i
+\]
+ then we plug in and derive:
+\[
+    \mathbb{P} \Bigg\{
+        \exists h \in \hh_i : L(h) \geq \hat{L} (h, S) +
+        \sqrt {
+            \frac {8} {n} \cdot
+            \frac { \ln \big(
+            4 \big(
+                ( 2n )^\cw + 1
+            \big)
+            \cdot
+            \big( \cw \cdot (\cw + 1) \big)
+            \big) } {\delta}
+        }
+    \Bigg\}
+\]
 
 \subsection{}
 

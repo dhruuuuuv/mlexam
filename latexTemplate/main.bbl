@@ -73,6 +73,20 @@
       \field{volume}{4}
       \field{year}{2012}
     \endentry
+    \entry{mln}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c0f9c7a332d1cefdfa5f172be1b3f48c}{Seldin}{S\bibinitperiod}{Yevgeny}{Y\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c0f9c7a332d1cefdfa5f172be1b3f48c}
+      \strng{fullhash}{c0f9c7a332d1cefdfa5f172be1b3f48c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Yevgeny's Lecture Notes 1-Dec-2016}
+      \field{volume}{1}
+      \field{year}{2016}
+    \endentry
     \entry{mla}{book}{}
       \name{author}{2}{}{%
         {{hash=c0f9c7a332d1cefdfa5f172be1b3f48c}{Seldin}{S\bibinitperiod}{Yevgeny}{Y\bibinitperiod}{}{}{}{}}%
