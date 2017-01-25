@@ -73,6 +73,21 @@
       \field{volume}{4}
       \field{year}{2012}
     \endentry
+    \entry{mla}{book}{}
+      \name{author}{2}{}{%
+        {{hash=c0f9c7a332d1cefdfa5f172be1b3f48c}{Seldin}{S\bibinitperiod}{Yevgeny}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=7848f2716625f371de810c3dbdf1d904}{Igel}{I\bibinitperiod}{Christian}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3016c90d73994c330f8354ab03bfaef8}
+      \strng{fullhash}{3016c90d73994c330f8354ab03bfaef8}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Machine Learning Assignments, KU}
+      \field{volume}{5}
+      \field{year}{2016}
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

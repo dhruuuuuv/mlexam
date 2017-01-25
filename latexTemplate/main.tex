@@ -73,11 +73,11 @@ I utilised the \texttt{neighbours} library from the \texttt{sklearn} package. \\
 
 The KNN algorithm uses a distance metric to calculate the distance between a (set of) training point(s) and the other points. I used the Euclidian distance, given by $ || \xbf - \xbf' || $, or $ \sqrt {\xbf^T \xbf' } $. The algorithm works by calculating the distances from a test point to the other points, and then finding the nearest K points to that point. In a regression task, the test point is assigned the value of the mean of the nearest K neighbours. \\
 
-My method involved using model selection methods such as cross-validation and grid search. Since this is model selection, cross validation was needed as we only use the training data during model selection. This gave us a better way to prevent overfitting of the training data. I used the \texttt{GridSearchCV} package from \texttt{sklearn}. The range of possible $k$ values was given as the odd numbers between 1 and 29. This performed a 5-fold cross validation on each of the possible values of $k$, averaging out the resulting error (i.e. splitting the data into 5 equal chunks, using 4 as the training set, and 1 as the validation set, and then cycling through all possible 5 validation sets). The error function used in the algorithm was the mean squared error.\\
+My method involved using model selection methods such as cross-validation and grid search. Since this is model selection, cross validation was needed as I only use the training data during model selection. This gave us a better way to prevent overfitting of the training data. I used the \texttt{GridSearchCV} package from \texttt{sklearn}. The range of possible $k$ values was given as the odd numbers between 1 and 29. This performed a 5-fold cross validation on each of the possible values of $k$, averaging out the resulting error (i.e. splitting the data into 5 equal chunks, using 4 as the training set, and 1 as the validation set, and then cycling through all possible 5 validation sets). The error function used in the algorithm was the mean squared error.\\
 
 This method resulted in the optimum hyperparameter as $k = 7$, with a MSE of $0.00118$ on the test data, and a MSE of $0.000870$. \\
 
-Clearly, the KNN Regressor worked better on the training data, which is to be expected due to the model's simplicity in using the $k$ training points' average to return the regression results - therefore the training points are bound to have a low MSE. In comparison, the training data in the linear regressor performed the same as the test data. The difference in this would be due to the nature of a linear regressor, which would 'average out' the regression line over the points, thus leading to a small MSE on both the training and test data. On the test data, the KNN Regressor did perform a bit better than the linear regressor - perhaps due to the non-linear nature of KNN capturing the underlying nature of the data slightly more accurately. Overall, I believe the KNN method worked well as we had a relatively low variance on the data - KNN can be skewed by big outliers in the data. The cross-validation helped to prevent overfitting on the data, which may have also caused the error on the test data to drop in comparison to the linear regressor.
+Clearly, the KNN Regressor worked better on the training data, which is to be expected due to the model's simplicity in using the $k$ training points' average to return the regression results - therefore the training points are bound to have a low MSE. In comparison, the training data in the linear regressor performed the same as the test data. The difference in this would be due to the nature of a linear regressor, which would 'average out' the regression line over the points, thus leading to a small MSE on both the training and test data. On the test data, the KNN Regressor did perform a bit better than the linear regressor - perhaps due to the non-linear nature of KNN capturing the underlying nature of the data slightly more accurately. Overall, I believe the KNN method worked well as I had a relatively low variance on the data - KNN can be skewed by big outliers in the data. The cross-validation helped to prevent overfitting on the data, which may have also caused the error on the test data to drop in comparison to the linear regressor.
 
 \newpage
 \section{Weed}
@@ -144,7 +144,7 @@ The normalisation was performed by calculating the mean and the standard deviati
 
 \[ f_{\text{norm}} = \frac {\xbf - \mu} {\sigma} \]
 
-This function was used to transform the training data to have the above mean and variance. The function was then also used to encode the test data, however with the \emph{training} mean and variance (as we do not know the test mean and variance in most circumstances). \\
+This function was used to transform the training data to have the above mean and variance. The function was then also used to encode the test data, however with the \emph{training} mean and variance (as I do not know the test mean and variance in most circumstances). \\
 
 This normalised data was then used on the SVMs, resulting in:
 
@@ -184,9 +184,9 @@ with bias:
 
 The zero-one loss on the training data was: $0.0300$, and on the test data: $0.0383$.
 
-For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$, this places a different level of importance on different features. In the training data, the ranges of the different features spanned from $112$ for feature 1, to $7205$ for feature 4. This squared Euclidian distance measure means that a difference of 1 in the 4th feature (a tiny amount of difference, relative to the range is equivalent to, about 0.01\%) would be equivalent to a difference of approximately 0.90\% in the 1st feature. This shows that small differences are exaggerated in feature 4 from the Euclidian distance calculation. By normalising the data, we even out these differences in ranges to adjust for this problem. In the transformed data, the range of feature 1 is 10.78, and feature 4 is 4.80, which means distance in both is much more relative. The results also converged faster than without normalising the data first. \\
+For SVMs, the accuracy improved marginally on the training data, but stayed constant for the test data. Since the choice of kernel uses the squared Euclidian distance $\big( || x - x' || ^2 \big)$, this places a different level of importance on different features. In the training data, the ranges of the different features spanned from $112$ for feature 1, to $7205$ for feature 4. This squared Euclidian distance measure means that a difference of 1 in the 4th feature (a tiny amount of difference, relative to the range is equivalent to, about 0.01\%) would be equivalent to a difference of approximately 0.90\% in the 1st feature. This shows that small differences are exaggerated in feature 4 from the Euclidian distance calculation. By normalising the data, I even out these differences in ranges to adjust for this problem. In the transformed data, the range of feature 1 is 10.78, and feature 4 is 4.80, which means distance in both is much more relative. The results also converged faster than without normalising the data first. \\
 
-However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. As we can see, the normalisation did not have as much of an effect as with the SVMs. This is due to the fact that algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
+However, for Logistic Regression, the loss increased for the training data samples, but decreased (by a very, very marginal amount, ~0.001) for the test data. As I can see, the normalisation did not have as much of an effect as with the SVMs. This is due to the fact that algorithm looks at the proportional relationships between the coefficients, which doesn't change with normalisation, so it would be expected to perform similarly to the non-normalised data. \\
 
 With random forests, normalisation does not affect the performance. This is as in the algorithm, the magnitude of one feature is never directly compared to another feature - only one feature is split at each stage. Convergence and precision don't affect the performance of the random forest algorithm. The formal way of describing this is by saying that random forests are invariant to monotonic transformations of individual features.\cite{so:norm}
 
@@ -232,7 +232,7 @@ The cluster centers were projected onto the first two principal components by ta
 
 Using the fact that a $\tilde{d}$-dimensional linear separator has $d_{VC} = \tilde{d} + 1$ \cite[p. 52]{abu}, where $\tilde{d}$ is the dimensionality of the transformed data $\in \mathcal{H}_Q$ by $\Phi_Q(\xbf)$.\\
 
-In calculating the dimensionality of the new space, we consider the different combinations of the original $(x_1...x_d)$ points to form the, up to order Q monomials. We may also place an upper bound on the dimension of $\Phi_Q(\xbf)$ by the dimension of $\Phi_Q^+(\xbf)$, as this includes the repetition of identical terms, and therefore will be higher than $\Phi_Q(\xbf)$. To this end, if we consider the terms in order from Q = 0 up to Q, there are $d^Q$ combinations of each order monomial, such as:
+In calculating the dimensionality of the new space, I consider the different combinations of the original $(x_1...x_d)$ points to form the, up to order Q monomials. We may also place an upper bound on the dimension of $\Phi_Q(\xbf)$ by the dimension of $\Phi_Q^+(\xbf)$, as this includes the repetition of identical terms, and therefore will be higher than $\Phi_Q(\xbf)$. To this end, if I consider the terms in order from Q = 0 up to Q, there are $d^Q$ combinations of each order monomial, such as:
 
 \begin{equation*}
 \begin{aligned}[c]
@@ -257,12 +257,12 @@ and therefore $d_{VC}$ equal to:
 
 \[ \big( \sum^Q_{i=0} d^i \big) + 1 \]
 
-There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that we can place an upper bound on this, and:
+There are $(Q+1)$ terms in this sum, with the highest order polynomial equal to $d^Q$, which means that I can place an upper bound on this, and:
 
 \[ d_{VC} (\mathcal{H}_Q) \leq (Q + 1) \cdot d^Q  \]
 
 \subsection{}
-Using the bound in equation 2.14 \cite[p. 58]{abu}, we substitute in the value for the $d_{VC}$, and get the following bound, with probability at least $1 - \delta, \forall_{h \in \mathcal{H}_Q}$ (N.B. here, and from now on, I am using the derivations from the book, i.e. from the two-sided Hoeffding):
+Using the bound in equation 2.14 \cite[p. 58]{abu}, I substitute in the value for the $d_{VC}$, and get the following bound, with probability at least $1 - \delta, \forall_{h \in \mathcal{H}_Q}$ (N.B. here, and from now on, I am using the derivations from the book, i.e. from the two-sided Hoeffding):
 
 \[
     L(h) \leq \hat{L} (h, S) + \sqrt { \frac {8} {N} \ln \bigg( \frac {4 \cdot ( (2N)^{(Q + 1) \cdot d^Q} + 1) } {\delta} \bigg) }
@@ -270,7 +270,7 @@ Using the bound in equation 2.14 \cite[p. 58]{abu}, we substitute in the value f
 
 \subsection{}
 
-If we consider the polynomial kernel with the 2nd order transform:
+If I consider the polynomial kernel with the 2nd order transform:
 
 \[ \Phi_2(\xbf) = (1, x_1, x_2, ... x_d, x_d) \]
 
@@ -294,9 +294,9 @@ We can place an upper bound on this as the Qth polynomial kernel, which equals:
 
 as it includes all the other terms from the sum, just with higher coefficients.\\
 
-We note that we can bound $\Phi_Q(\xbf)$ by $\Phi^+_Q(\xbf)$, as it includes more terms due to the repeated identical terms, and if we set the repeated terms equal to 0, they are equivalent. \\
+We note that I can bound $\Phi_Q(\xbf)$ by $\Phi^+_Q(\xbf)$, as it includes more terms due to the repeated identical terms, and if I set the repeated terms equal to 0, they are equivalent. \\
 
-From the above, if we consider that:
+From the above, consider that:
 
 \begin{align*}
     || \xbf || &\leq 1 \\
@@ -313,6 +313,25 @@ From the above, if we consider that:
 
 \subsection{}
 
+\subsection{}
+
+% For each hypothesis space $\mathcal{H}_1, \mathcal{H}_2 ..., \mathcal{H}_Q$, note that:
+%
+% \[
+%     $\mathcal{H}_1 \subset \mathcal{H}_2 \subset ... \subset \mathcal{H}_Q$
+% \]
+%
+% as each polynomial transform that describes the hypothesis space includes the monomials of order i $in \mathcal{H}_i$, and adds the monomials of order Q.
+%
+% From this, the union of the sets
+
+The VC dimension is defined as the largest N such that $m_\mathcal{H} (N) = 2^N.$
+It is also true that $m_\mathcal{H} \leq \min \; (|\mathcal{H}|, 2^N)$
+\cite[Home Assignment 5.2.1]{mla}. Finally, if $m_\mathcal{H} (N) = 2^N \; \forall_N, d_{VC} = \infty$. \cite[def. 2.5, p.50]{abu}\\
+
+As $|\mathcal{H}|$ is infinite for the union of all polynomial transformations, for all N, $m_\mathcal{H} = 2^N$, and following the definition above, this implies that $d_{VC} = \infty$.
+
+\subsection{}
 
 \newpage
 \printbibliography
