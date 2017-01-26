@@ -479,7 +479,6 @@ Therefore, the bound on $h$, w.p. at least $ 1 - \delta$ is:
     }
 \]
 
-
 \subsection{}
 
 % For each hypothesis space $\mathcal{H}_1, \mathcal{H}_2 ..., \mathcal{H}_Q$, note that:
@@ -492,13 +491,60 @@ Therefore, the bound on $h$, w.p. at least $ 1 - \delta$ is:
 %
 % From this, the union of the sets
 
+
 The VC dimension is defined as the largest N such that $m_\mathcal{H} (N) = 2^N.$
 It is also true that $m_\mathcal{H} \leq \min \; (|\mathcal{H}|, 2^N)$
 \cite[Home Assignment 5.2.1]{mla}. Finally, if $m_\mathcal{H} (N) = 2^N \; \forall_N, d_{VC} = \infty$. \cite[def. 2.5, p.50]{abu}\\
 
 As $|\mathcal{H}|$ is infinite for the union of all polynomial transformations, for all N, $m_\mathcal{H} = 2^N$, and following the definition above, this implies that $d_{VC} = \infty$.
 
+
+
 \subsection{}
+
+Therefore, the bound on $h \in \hh$, w.p. at least $ 1 - \delta$ is:
+
+\[
+    L(h) \leq \hat{L} (h, S) +
+    \sqrt {
+        \frac {8} {n} \cdot \ln
+        \frac { \big(
+        4 \big(
+            ( 2n )^\cw + 1
+        \big)
+        \cdot
+        \big( \cw \cdot (\cw + 1) \big)
+        \big) } {\delta}
+    }
+\]
+
+\subsection{}
+
+In order for the above to be non-trivial, we want $\epsilon$ to be less than one. If we rearrange the above with respect to Q (considering big-O notation where we examine how a function grows, we therefore ignore constants and only look at the term that grows the fastest).
+
+\begin{align*}
+    \sqrt {
+        \frac {8} {N} \cdot \ln
+        \frac { \big(
+        4 \big(
+            ( 2N )^\cw + 1
+        \big)
+        \cdot
+        \big( \cw \cdot (\cw + 1) \big)
+        \big) } {\delta}
+    } \leq 1 \\
+    8 \ln (...) \leq N \\
+    \ln \bigg(\frac{1} {\delta} \cdot 4 \cdot ((2N)^{2^Q} + 1) \cdot 2^Q \cdot (2^Q + 1) \bigg) = \ln \bigg(\frac {1} {\delta} \bigg) + \ln 4 + \ln \big( ((2N)^{2^Q} + 1) \cdot 2^Q \cdot (2^Q + 1) \big)  \leq N \\
+    \ln \big( ((2N)^{2^Q} + 1) \cdot 2^Q \cdot (2^Q + 1) \big)  \leq N \\
+    \ln \big( (2N)^{2^Q} \cdot 2^{2Q} \big)  \leq N \\
+    \ln \big( (2N)^{2^Q}\big) + \big( \ln 2^{2Q} \big)  \leq N \\
+    2^Q \ln \big( 2N \big) + 2Q \big( \ln 2 \big)  \leq N \\
+    2^Q \ln \big( 2N \big)  \leq N \\
+    2^Q  \leq \frac {N} {\ln \big( 2N \big)} \\
+    Q  \leq \ln \Big( \frac {N} {\ln \big( 2N \big)} \Big) \\
+    \therefore Q = \mathcal{O} \bigg( \ln \Big( \frac {N} {\ln 2N} \Big) \bigg)
+\end{align*}
+
 
 \newpage
 \printbibliography
