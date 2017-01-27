@@ -541,10 +541,17 @@ In order for the above to be non-trivial, we want $\epsilon$ to be less than one
     2^Q \ln \big( 2N \big) + 2Q \big( \ln 2 \big)  \leq N \\
     2^Q \ln \big( 2N \big)  \leq N \\
     2^Q  \leq \frac {N} {\ln \big( 2N \big)} \\
-    Q  \leq \ln \Big( \frac {N} {\ln \big( 2N \big)} \Big) \\
+    Q  \leq \log_2 \Big( \frac {N} {\ln \big( 2N \big)} \Big) \\
     \therefore Q = \mathcal{O} \bigg( \ln \Big( \frac {N} {\ln 2N} \Big) \bigg)
 \end{align*}
 
+\subsection{}
+
+Looking at the probability bound, it may seem like there’s a contradiction, however, we can select a Q such that the $\epsilon$ term becomes greater than 1, and therefore the bound becomes trivial, and the VC lower bound still holds.
+
+\subsection{}
+
+In trying to minimise the bound, with a fixed $\delta$ and $n$, I obtain a tighter bound between the expected loss and the empirical loss. However, the bound formed in point 6 is a fairly complex bound, and the more complex learning model used, the better the results with the training data, i.e. the empirical loss. This can however lead to overfitting on the training data, fitting to idiosyncrasies that only exist in the training data, and not in the underlying pattern that we are trying to model. As we've chosen a more complex model, we have a slacker bound on the expected loss - the trade-off occurs between choosing a hypothesis with a high enough VC dimension (related to Q and d through the bound found in point 1) so that we can minimise the expected loss, but not so high that although the empirical loss keeps decreasing, the expected loss starts to increase.
 
 \newpage
 \printbibliography
